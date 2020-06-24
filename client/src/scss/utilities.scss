@@ -1,0 +1,25 @@
+// utilities
+
+// container
+.container {
+  max-width: $website-width;
+  padding: 0 1.5rem;
+  margin: auto;
+  overflow: hidden;
+}
+// Buttons
+%btn-shared {
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.btn {
+  &-main {
+    @extend %btn-shared;
+    background: $main-color;
+    color: $light-color;
+    text-decoration: none;
+  }
+}

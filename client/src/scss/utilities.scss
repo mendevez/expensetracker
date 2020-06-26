@@ -12,14 +12,40 @@
   padding: 0.8rem 2rem;
   cursor: pointer;
   border-radius: 5px;
+  border: none;
   text-transform: uppercase;
 }
 
 .btn {
   &-main {
     @extend %btn-shared;
-    background: $main-color;
+    background: $primary-color;
     color: $light-color;
     text-decoration: none;
+
+    &:hover {
+      background: $secondary-color;
+      color: $primary-color;
+    }
   }
+  &-form-button {
+    @extend %btn-shared;
+    background: $tertiary-color;
+    color: $light-color;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    width: 30%;
+    &:hover {
+      background: $primary-color;
+    }
+  }
+}
+
+// Add box shadow
+.add-box-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+// add border radiys
+.add-border-radius {
+  border-radius: 5px;
 }

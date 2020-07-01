@@ -1,5 +1,5 @@
-const ErrorResponse = require('../utils/errorResponse');
 const Expense = require('../models/Expense');
+const ErrorResponse = require('../utils/errorResponse');
 
 // @desc        Get all expenses
 // @route       GET /api/v1/expenses
@@ -11,7 +11,7 @@ exports.getExpenses = async (req, res, next) => {
       .status(200)
       .json({ success: true, count: expenses.length, data: expenses });
   } catch (error) {
-    res.status(400).json({ success: false });
+    next(error);
   }
 };
 
@@ -23,12 +23,14 @@ exports.getExpense = async (req, res, next) => {
     const expense = await Expense.findById(req.params.id);
 
     if (!expense) {
-      return next(new ErrorResponse(`Expense with id: ${req.params.id} not found`));
+      return next(
+        new ErrorResponse(`Expense with id: ${req.params.id} not found`)
+      );
     }
     res.status(200).json({ success: true, data: expense });
   } catch (error) {
     // res.status(400).json({ success: false });
-    next(new ErrorResponse(`Expense with id: ${req.params.id} not found`));
+    next(error);
   }
 };
 
@@ -40,7 +42,7 @@ exports.addExpense = async (req, res, next) => {
     const expense = await Expense.create(req.body);
     res.status(201).json({ success: true, data: expense });
   } catch (error) {
-    res.status(400).json({ success: false });
+    next(error);
   }
 };
 
@@ -59,7 +61,7 @@ exports.updateExpense = async (req, res, next) => {
     }
     res.status(200).json({ success: true, data: expense });
   } catch (error) {
-    return res.status(400).json({ success: false });
+    next(error);
   }
 };
 
@@ -75,6 +77,6 @@ exports.deleteExpense = async (req, res, next) => {
     }
     res.status(200).json({ success: true, data: {} });
   } catch (error) {
-    return res.status(400).json({ success: false });
+    next(error);
   }
 };

@@ -1,3 +1,4 @@
+
 // Customer error response
 class ErrorResponse extends Error {
   constructor(message, statusCode) {

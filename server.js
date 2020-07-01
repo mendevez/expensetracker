@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'development') {
 // Mount routers
 app.use('/api/v1/expenses', expenses);
 
-// Error handler middleware
+// Error handling middleware
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

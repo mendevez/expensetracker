@@ -16,6 +16,7 @@ textarea:focus,
 input:focus {
   outline: none;
 }
+
 // Navigation links
 .navlink {
   text-decoration: none;
@@ -24,6 +25,11 @@ input:focus {
   &:hover {
     text-decoration: underline;
   }
+}
+.link {
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
 }
 .active {
   text-decoration: underline;
@@ -101,4 +107,89 @@ input:focus {
     margin-bottom: 1rem;
     text-transform: uppercase;
   }
+}
+
+.dashboard {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: space-evenly;
+  &-options {
+    margin-top: 2rem;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.expense-list {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  text-align: center;
+
+  &-item {
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+      padding: 1rem;
+    }
+
+    &-cost {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      .fa-icon {
+        padding: 0 1rem;
+      }
+    }
+  }
+}
+
+.expense-item {
+  display: flex;
+
+  h1 {
+    padding: 1rem;
+  }
+}
+
+.not-found {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.modal {
+  position: fixed;
+  top: 25vh;
+  left: 25%;
+  right: 25%;
+  width: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  z-index: 1000;
+
+  &-header {
+    padding: 1rem;
+    text-align: center;
+    background: $primary-color;
+  }
+  &-title {
+    padding: 1rem;
+  }
+
+  &-buttons {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
 }

@@ -1,25 +1,21 @@
 import React, { Fragment } from 'react';
-import "./components/fontawesome";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './components/fontawesome';
+import { Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
-import Register from './components/auth/Register';
-import Login from './components/auth/Login';
-import Dashboard from './components/expenses/Dashboard';
+import Routes from './components/routing/Routes';
+import history from './history';
+
 import './scss/style.scss';
 
 const App = () => (
-  <Router>
+  <Router history={history}>
     <Fragment>
       <Navbar />
-      <Route exact path="/" component={Landing} />
-      <section className="container">
-        <Switch>
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/dashboard" component={Dashboard} />
-        </Switch>
-      </section>
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route component={Routes} />
+      </Switch>
     </Fragment>
   </Router>
 );

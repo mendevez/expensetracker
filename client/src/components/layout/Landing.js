@@ -9,7 +9,7 @@ export const Landing = () => {
       <div className="landing-content">
         <h1 className="landing-content-text">Track and manage your expenses</h1>
 
-        <NavLink className="btn-main" to="/register">
+        <NavLink className="btn-main" to="/dashboard">
           Get started
         </NavLink>
       </div>

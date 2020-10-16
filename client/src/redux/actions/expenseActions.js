@@ -4,6 +4,7 @@ import {
   REMOVE_EXPENSE,
   GET_EXPENSE,
   EDIT_EXPENSE,
+  GET_TOTAL_BY_CATEGORY,
 } from './actionTypes';
 import api from '../../utils/api';
 import history from '../../history';
@@ -70,6 +71,20 @@ export const removeExpense = (id) => async (dispatch) => {
       payload: id,
     });
     history.push('/dashboard');
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getTotalByCategory = () => async (dispatch) => {
+
+  try {
+    const response = await api.get('expenses/total');
+
+    dispatch({
+      type: GET_TOTAL_BY_CATEGORY,
+      payload: response.data
+    });
   } catch (error) {
     console.log(error);
   }

@@ -3,7 +3,7 @@ const ErrorResponse = require('../utils/errorResponse');
 
 // @desc        Get all expenses
 // @route       GET /api/v1/expenses
-// @access      Public
+// @access      Private
 exports.getExpenses = async (req, res, next) => {
   try {
     const expenses = await Expense.find();
@@ -15,9 +15,9 @@ exports.getExpenses = async (req, res, next) => {
   }
 };
 
-// @desc        Get all expenses
+// @desc        Get single expense
 // @route       GET /api/v1/expenses/:id
-// @access      Public
+// @access      Private
 exports.getExpense = async (req, res, next) => {
   try {
     const expense = await Expense.findById(req.params.id);
@@ -30,6 +30,33 @@ exports.getExpense = async (req, res, next) => {
     res.status(200).json({ success: true, data: expense });
   } catch (error) {
     // res.status(400).json({ success: false });
+    next(error);
+  }
+};
+
+// @desc        Sum all expenses by category
+// @route       GET /api/v1/expenses/total
+// @access      Private
+exports.getTotalByCategory = async (req, res, next) => {
+  let resultObject = {
+    labels: [],
+    data: [],
+  };
+  try {
+    const result = await Expense.aggregate([
+      {
+        $match: {},
+      },
+      { $group: { _id: '$category', total: { $sum: '$cost' } } },
+    ]);
+
+    result.forEach((element) => {
+      resultObject.labels.push(element._id);
+      resultObject.data.push(element.total);
+    });
+
+    res.status(200).json({ success: true, data: resultObject });
+  } catch (error) {
     next(error);
   }
 };

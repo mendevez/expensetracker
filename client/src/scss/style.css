@@ -1,0 +1,349 @@
+.container {
+  max-width: 1100px;
+  padding: 0 1.5rem;
+  margin: auto;
+}
+
+.btn-main, .btn-form-button, .btn-dashboard-button, .btn-modal-button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  text-transform: uppercase;
+  text-decoration: none !important;
+}
+
+.btn {
+  text-decoration: none;
+}
+
+.btn-main {
+  background: #3b4d61;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.btn-main:hover {
+  background: #ffd700;
+  color: #3b4d61;
+}
+
+.btn-form-button {
+  background: #6b7b8c;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  width: 30%;
+}
+
+.btn-form-button:hover {
+  background: #3b4d61;
+}
+
+.btn-dashboard-button {
+  background: #3b4d61;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 1rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.btn-modal-button {
+  margin: 1rem 0 0 0.8rem;
+}
+
+.btn-modal-button:hover {
+  background: #3b4d61;
+  color: #ffffff;
+}
+
+.add-box-shadow {
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.add-border-radius {
+  border-radius: 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Varela', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.navlink {
+  text-decoration: none;
+  cursor: pointer;
+  color: #ffd700;
+}
+
+.navlink:hover {
+  text-decoration: underline;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.navbar {
+  background: #3b4d61;
+  color: #ffd700;
+  padding: 1.5rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-transform: uppercase;
+  border-bottom: 3px #6b7b8c solid;
+}
+
+.navbar .logo {
+  padding: 0 1rem;
+  text-decoration: underline;
+  color: #ffd700;
+}
+
+.navbar ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navbar ul li {
+  padding: 0 1rem;
+}
+
+.landing {
+  height: 100vh;
+  background: url("../img/landing3.jpg") no-repeat center center/cover;
+  position: relative;
+}
+
+.landing-content {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.landing-content-text {
+  padding: 2rem 1rem;
+  color: #ffd700;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #3b4d61;
+  opacity: 0.7;
+}
+
+.app-form {
+  max-width: 600px;
+  margin: 1rem auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 2rem;
+}
+
+.app-form-errors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1rem;
+  background: red;
+}
+
+.app-form-errors span {
+  color: #ffffff;
+}
+
+.app-form-title {
+  color: #6b7b8c;
+  margin-bottom: 1rem;
+}
+
+.app-form-input {
+  border: none;
+  border-bottom: 2px solid #ffd700;
+  padding: 0.5rem 1rem;
+  font-size: 12px;
+  margin-bottom: 1rem;
+}
+
+.app-form select:focus, .app-form select:hover {
+  outline: none;
+}
+
+.app-form select option {
+  padding: 2rem;
+}
+
+.dashboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: 2rem;
+}
+
+.dashboard-options {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.expense-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.expense-list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.expense-list-item h3 {
+  padding: 1rem;
+}
+
+.expense-list-item-cost {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.expense-list-item-cost .fa-icon {
+  padding: 0 1rem;
+}
+
+.expense-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.expense-item h1 {
+  padding: 1rem;
+}
+
+.not-found {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.modal {
+  position: fixed;
+  top: 25vh;
+  left: 25%;
+  right: 25%;
+  width: 50%;
+  background: #fff;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  z-index: 1000;
+}
+
+.modal-header {
+  padding: 1rem;
+  text-align: center;
+  background: #3b4d61;
+}
+
+.modal-title {
+  padding: 1rem;
+}
+
+.modal-buttons {
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
+}
+/*# sourceMappingURL=style.css.map */

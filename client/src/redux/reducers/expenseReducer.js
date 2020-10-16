@@ -4,11 +4,13 @@ import {
   REMOVE_EXPENSE,
   GET_EXPENSE,
   EDIT_EXPENSE,
+  GET_TOTAL_BY_CATEGORY,
 } from '../actions/actionTypes';
 
 const initialState = {
   expenses: [],
   isLoading: true,
+  chartData: [],
 };
 
 export default (state = initialState, action) => {
@@ -27,7 +29,6 @@ export default (state = initialState, action) => {
         isLoading: false,
       };
     case EDIT_EXPENSE:
-      console.log(payload);
       return {
         ...state,
         // expenses: state.expenses.map((expense) =>
@@ -46,6 +47,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         expenses: state.expenses.filter((expense) => expense.id !== payload),
+        isLoading: false,
+      };
+
+    case GET_TOTAL_BY_CATEGORY:
+      return {
+        ...state,
+        chartData: payload.data,
         isLoading: false,
       };
     default:

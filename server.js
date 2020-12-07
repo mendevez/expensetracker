@@ -13,6 +13,7 @@ connectDB();
 
 // Route files
 const expenses = require('./routes/expenses');
+const auth = require('./routes/auth');
 
 const app = express();
 
@@ -26,6 +27,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount routers
 app.use('/api/v1/expenses', expenses);
+app.use('/api/v1/auth', auth);
 
 // Error handling middleware
 app.use(errorHandler);

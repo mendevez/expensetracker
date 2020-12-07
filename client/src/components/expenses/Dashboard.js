@@ -15,6 +15,7 @@ const Dashboard = ({
   expenses: { expenses, isLoading },
   data,
 }) => {
+  
   useEffect(() => {
     getExpenses();
     getTotalByCategory();

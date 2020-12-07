@@ -10,6 +10,7 @@ const AddExpense = ({ addExpense }) => {
     addExpense(data);
   };
 
+
   return (
     <div>
       <ExpenseForm initialValues={expense} onSubmit={onSubmit} />

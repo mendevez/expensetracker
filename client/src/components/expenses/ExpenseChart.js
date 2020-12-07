@@ -2,7 +2,6 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
 export const ExpenseChart = ({ chartData }) => {
-  console.log(chartData);
   if (!chartData) {
     return <div></div>;
   }
@@ -11,7 +10,6 @@ export const ExpenseChart = ({ chartData }) => {
     labels: chartData.labels,
     datasets: [
       {
-        label: 'My First dataset',
         data: chartData.data,
         backgroundColor: [
           '#003f5c',

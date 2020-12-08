@@ -52,6 +52,8 @@ const Dashboard = ({
 const mapStateToProps = (state) => ({
   expenses: state.expenses,
   data: state.expenses.chartData,
+  modal: state.modal.showModal,
+  id: state.modal.data
 });
 
 export default connect(mapStateToProps, { getExpenses, getTotalByCategory })(

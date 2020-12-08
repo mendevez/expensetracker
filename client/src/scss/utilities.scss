@@ -48,6 +48,12 @@
     border-radius: 5px;
     font-size: 0.8rem;
   }
+  &-delete-button {
+    @extend %btn-shared;
+    background: #B22222;
+    color: $light-color;
+    border-radius: 5px;
+  }
   &-modal-button {
     @extend %btn-shared;
     margin: 1rem 0 0 0.8rem;

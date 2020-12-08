@@ -70,7 +70,7 @@ export const removeExpense = (id) => async (dispatch) => {
       type: REMOVE_EXPENSE,
       payload: id,
     });
-    history.push('/dashboard');
+    // history.push('/dashboard');
   } catch (error) {
     console.log(error);
   }

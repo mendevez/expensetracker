@@ -4,7 +4,6 @@ import Register from '../auth/Register';
 import Login from '../auth/Login';
 import Dashboard from '../expenses/Dashboard';
 import EditExpense from '../expenses/EditExpense';
-import RemoveExpense from '../expenses/RemoveExpense';
 import AddExpense from '../expenses/AddExpense';
 import ExpenseDetails from '../expenses/ExpenseDetails';
 import NotFound from '../layout/NotFound';
@@ -19,7 +18,6 @@ const Routes = (props) => {
         <Route exact path="/edit/:id" component={EditExpense} />
         <Route exact path="/add" component={AddExpense} />
         <Route exact path="/:id" component={ExpenseDetails} />
-        <Route exact path="/remove/:id" component={RemoveExpense} />
         <Route component={NotFound} />
       </Switch>
     </section>

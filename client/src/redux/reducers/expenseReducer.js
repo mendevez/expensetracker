@@ -46,7 +46,7 @@ export default (state = initialState, action) => {
     case REMOVE_EXPENSE:
       return {
         ...state,
-        expenses: state.expenses.filter((expense) => expense.id !== payload),
+        expenses: state.expenses.filter((expense) => expense._id !== payload),
         isLoading: false,
       };
 

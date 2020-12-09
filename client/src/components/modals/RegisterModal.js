@@ -1,20 +1,24 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const RegisterModal = () => {
   return (
-    <div className="modal">
-      <div className="modal-header">
-        <FontAwesomeIcon size="5x" color="#ffd700" icon="times-circle" />
-      </div>
-      <h3 className="modal-title">Are you sure you want to remove?</h3>
-      <div className="modal-buttons">
-        <button onClick={removeExpense} className="btn-modal-button">
-          Yes
-        </button>
-        <button onClick={hideModal} className="btn-modal-button">
-          No
-        </button>
-      </div>
+    <div className="modal-register add-border-radius">
+      <form className="app-form">
+        <h1 className="app-form-title">
+          <FontAwesomeIcon icon="user" /> Register
+        </h1>
+        <input className="app-form-input " placeholder="Name" type="text" />
+
+        <input className="app-form-input " placeholder="Email" type="text" />
+
+        <input
+          className="app-form-input"
+          placeholder="Password"
+          type="password"
+        />
+        <button className="btn-form"> Register</button>
+      </form>
     </div>
   );
 };

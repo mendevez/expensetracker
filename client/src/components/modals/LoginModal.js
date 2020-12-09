@@ -1,14 +1,13 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Register = () => {
+export const LoginModal = () => {
   return (
-    <div>
-      <form className="app-form add-box-shadow add-border-radius ">
+    <div className="modal-login add-border-radius">
+      <form className="app-form  ">
         <h1 className="app-form-title">
-          <FontAwesomeIcon icon="user" /> Sign up
+          <FontAwesomeIcon icon="user" /> Login
         </h1>
-        <input className="app-form-input " placeholder="Name" type="text" />
 
         <input className="app-form-input " placeholder="Email" type="text" />
 
@@ -17,10 +16,10 @@ const Register = () => {
           placeholder="Password"
           type="password"
         />
-        <button className="btn-form-button"> Register</button>
+        <button className="btn-form">Login</button>
       </form>
     </div>
   );
 };
 
-export default Register;
+export default LoginModal;

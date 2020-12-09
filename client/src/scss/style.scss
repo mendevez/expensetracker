@@ -31,9 +31,6 @@ input:focus {
   text-decoration: none;
   color: #000;
 }
-.active {
-  text-decoration: underline;
-}
 
 // Navbar
 .navbar {
@@ -88,7 +85,7 @@ input:focus {
 // Form
 
 .app-form {
-  max-width: 600px;
+  max-width: 800px;
   margin: 1rem auto;
   display: flex;
   flex-direction: column;
@@ -185,15 +182,30 @@ input:focus {
   text-align: center;
 }
 
-.modal {
+%modal-shared {
   position: fixed;
-  top: 25vh;
-  left: 25%;
-  right: 25%;
-  width: 50%;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $light-color;
   z-index: 1000;
+}
+
+.modal-register {
+  @extend %modal-shared;
+  width: 30%;
+  height: 40%;
+}
+
+.modal-login {
+  @extend %modal-shared;
+  width: 30%;
+  height: 40%;
+}
+
+.modal-delete {
+  @extend %modal-shared;
+  width: 50%;
 
   &-header {
     padding: 1rem;

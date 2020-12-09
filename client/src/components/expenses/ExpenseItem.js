@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { showModal } from '../../redux/actions/modalActions';
+import { DELETE_MODAL } from '../modals/modalTypes';
 const ExpenseItem = ({ expense, showModal }) => {
   const { _id, name, cost } = expense;
-  const displayModal = () => {
-    showModal(_id);
+  const openDeleteModal = () => {
+    showModal(_id, DELETE_MODAL);
   };
 
   return (
@@ -21,10 +22,10 @@ const ExpenseItem = ({ expense, showModal }) => {
           <FontAwesomeIcon icon="dollar-sign" size="xs" />
           {cost}
         </h3>
-        <NavLink to={`/edit/${_id}`} className="fa-icon">
-          <FontAwesomeIcon icon="pen" color="green" />
+        <NavLink to={`/edit/${_id}`} className="btn-edit">
+          <FontAwesomeIcon icon="pen" color="white" />
         </NavLink>
-        <button onClick={displayModal} className="btn-delete-button">
+        <button onClick={openDeleteModal} className="btn-delete">
           <FontAwesomeIcon icon="trash" color="white" />
         </button>
       </div>

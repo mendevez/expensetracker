@@ -28,7 +28,7 @@
       color: $primary-color;
     }
   }
-  &-form-button {
+  &-form {
     @extend %btn-shared;
     background: $tertiary-color;
     color: $light-color;
@@ -39,7 +39,7 @@
       background: $primary-color;
     }
   }
-  &-dashboard-button {
+  &-dashboard {
     @extend %btn-shared;
     background: $primary-color;
     color: $light-color;
@@ -48,13 +48,18 @@
     border-radius: 5px;
     font-size: 0.8rem;
   }
-  &-delete-button {
+  &-delete {
     @extend %btn-shared;
-    background: #B22222;
-    color: $light-color;
+    background: #b22222;
     border-radius: 5px;
   }
-  &-modal-button {
+  &-edit {
+    padding: 0.4rem 0.8rem;
+    margin-right: 5px;
+    border-radius: 5px;
+    background: $green-color;
+  }
+  &-modal {
     @extend %btn-shared;
     margin: 1rem 0 0 0.8rem;
 

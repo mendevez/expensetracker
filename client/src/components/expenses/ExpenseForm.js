@@ -73,7 +73,7 @@ const ExpenseForm = ({ initialValues, onSubmit }) => {
         ref={register}
       />
 
-      <button className="btn-form-button"> Submit </button>
+      <button className="btn-form"> Submit </button>
     </form>
   );
 };

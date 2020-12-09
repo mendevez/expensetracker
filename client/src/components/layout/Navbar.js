@@ -1,7 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { REGISTER_MODAL, LOGIN_MODAL } from '../modals/modalTypes';
+import { showModal } from '../../redux/actions/modalActions';
 
-export const Navbar = () => {
+export const Navbar = ({ showModal }) => {
+  const openRegisterModal = () => {
+    showModal(null, REGISTER_MODAL);
+  };
+  const openLoginModal = () => {
+    showModal(null, LOGIN_MODAL);
+  };
+
   return (
     <nav className="navbar">
       <h1>
@@ -12,12 +22,12 @@ export const Navbar = () => {
 
       <ul>
         <li>
-          <NavLink activeClassName="active" className="navlink" to="/register">
+          <NavLink to="" className="navlink" onClick={openRegisterModal}>
             Register
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" className="navlink" to="login">
+          <NavLink className="navlink" to="" onClick={openLoginModal}>
             Login
           </NavLink>
         </li>
@@ -26,4 +36,4 @@ export const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default connect(null, { showModal })(Navbar);

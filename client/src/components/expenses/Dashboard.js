@@ -28,7 +28,7 @@ const Dashboard = ({
       ) : (
         <div className="dashboard">
           <div className="dashboard-options">
-            <NavLink className="btn-dashboard-button" to="/add">
+            <NavLink className="btn-dashboard" to="/add">
               Add New Expense
             </NavLink>
           </div>

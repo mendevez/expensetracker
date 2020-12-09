@@ -16,8 +16,12 @@ export const ExpenseChart = ({ chartData }) => {
           '#58508d',
           '#bc5090',
           '#ff6361',
-          '#ffa600',
+          '#251e3e',
           '#488f31',
+          '#6e0f0f',
+          '#2ab7ca',
+          '#b3cde0',
+  
         ],
       },
     ],

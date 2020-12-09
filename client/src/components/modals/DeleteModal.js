@@ -9,16 +9,16 @@ const DeleteModal = ({ removeExpense, hideModal, expenseId }) => {
     removeExpense(expenseId);
   };
   return (
-    <div className="modal">
-      <div className="modal-header">
+    <div className="modal-delete">
+      <div className="modal-delete-header">
         <FontAwesomeIcon size="5x" color="#ffd700" icon="times-circle" />
       </div>
-      <h3 className="modal-title">Are you sure you want to remove?</h3>
-      <div className="modal-buttons">
-        <button onClick={removeCurrentExpense} className="btn-modal-button">
+      <h3 className="modal-delete-title">Are you sure you want to remove?</h3>
+      <div className="modal-delete-buttons">
+        <button onClick={removeCurrentExpense} className="btn-modal">
           Yes
         </button>
-        <button onClick={hideModal} className="btn-modal-button">
+        <button onClick={hideModal} className="btn-modal">
           No
         </button>
       </div>

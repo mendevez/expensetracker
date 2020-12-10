@@ -6,11 +6,14 @@ export const ExpenseChart = ({ chartData }) => {
     return <div></div>;
   }
 
+  const chartLabels = Object.keys(chartData);
+  const costByCategory = Object.values(chartData); 
+
   const data = {
-    labels: chartData.labels,
+    labels:  chartLabels,
     datasets: [
       {
-        data: chartData.data,
+        data: costByCategory,
         backgroundColor: [
           '#003f5c',
           '#58508d',

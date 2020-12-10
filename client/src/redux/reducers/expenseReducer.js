@@ -44,9 +44,17 @@ export default (state = initialState, action) => {
         isLoading: false,
       };
     case REMOVE_EXPENSE:
+      let chartObject = state.chartData;
+      let {category, cost} = payload ;
       return {
         ...state,
-        expenses: state.expenses.filter((expense) => expense._id !== payload),
+        expenses: state.expenses.filter(
+          (expense) => expense._id !== payload._id
+        ),
+        chartData: {
+          ...state.chartData,
+          [category]: state.chartData[category] - cost,
+        },
         isLoading: false,
       };
 

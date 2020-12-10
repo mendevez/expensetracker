@@ -1,6 +1,7 @@
 const asyncHandler = require('../middleware/async');
 const Expense = require('../models/Expense');
 const ErrorResponse = require('../utils/errorResponse');
+const helperFunctions = require('../utils/helperFunctions');
 
 // @desc        Get all expenses
 // @route       GET /api/v1/expenses
@@ -30,10 +31,6 @@ exports.getExpense = asyncHandler(async (req, res, next) => {
 // @route       GET /api/v1/expenses/total
 // @access      Private
 exports.getTotalByCategory = asyncHandler(async (req, res, next) => {
-  let resultObject = {
-    labels: [],
-    data: [],
-  };
 
   const result = await Expense.aggregate([
     {
@@ -42,12 +39,9 @@ exports.getTotalByCategory = asyncHandler(async (req, res, next) => {
     { $group: { _id: '$category', total: { $sum: '$cost' } } },
   ]);
 
-  result.forEach((element) => {
-    resultObject.labels.push(element._id);
-    resultObject.data.push(element.total);
-  });
+  const categoriesObject =  helperFunctions.createCategoriesObject(result);
 
-  res.status(200).json({ success: true, data: resultObject });
+  res.status(200).json({ success: true, data: categoriesObject });
 });
 
 // @desc        Add new expense

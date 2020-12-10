@@ -62,13 +62,14 @@ export const editExpense = (id, formValues) => async (dispatch) => {
   }
 };
 
-export const removeExpense = (id) => async (dispatch) => {
+export const removeExpense = (expense) => async (dispatch) => {
+  const { _id } = expense;
   try {
-    await api.delete(`/expenses/${id}`);
+    await api.delete(`/expenses/${_id}`);
 
     dispatch({
       type: REMOVE_EXPENSE,
-      payload: id,
+      payload: expense,
     });
 
   } catch (error) {
@@ -77,13 +78,12 @@ export const removeExpense = (id) => async (dispatch) => {
 };
 
 export const getTotalByCategory = () => async (dispatch) => {
-
   try {
     const response = await api.get('expenses/total');
-
+    
     dispatch({
       type: GET_TOTAL_BY_CATEGORY,
-      payload: response.data
+      payload: response.data,
     });
   } catch (error) {
     console.log(error);

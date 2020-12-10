@@ -7,7 +7,7 @@ import { DELETE_MODAL } from '../modals/modalTypes';
 const ExpenseItem = ({ expense, showModal }) => {
   const { _id, name, cost } = expense;
   const openDeleteModal = () => {
-    showModal(_id, DELETE_MODAL);
+    showModal(expense, DELETE_MODAL);
   };
 
   return (

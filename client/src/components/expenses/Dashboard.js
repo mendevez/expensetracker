@@ -13,8 +13,7 @@ const Dashboard = ({
   getExpenses,
   getTotalByCategory,
   expenses: { expenses, isLoading },
-  chartData,
-  chartLabels,
+  totalByCategoryChartData
 }) => {
   useEffect(() => {
     getExpenses();
@@ -42,7 +41,7 @@ const Dashboard = ({
                   return <ExpenseItem key={expense._id} expense={expense} />;
                 })}
             </div>
-            <ExpenseChart chartData={chartData}/>
+            <ExpenseChart totalByCategoryChartData={totalByCategoryChartData}/>
           </div>
         </div>
       )}
@@ -52,7 +51,7 @@ const Dashboard = ({
 
 const mapStateToProps = (state) => ({
   expenses: state.expenses,
-  chartData: state.expenses.chartData,
+  totalByCategoryChartData: state.expenses.totalByCategoryChartData,
   modal: state.modal.showModal,
 });
 

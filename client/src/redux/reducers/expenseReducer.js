@@ -10,7 +10,7 @@ import {
 const initialState = {
   expenses: [],
   isLoading: true,
-  chartData: [],
+  totalByCategoryChartData: [],
 };
 
 export default (state = initialState, action) => {
@@ -31,29 +31,29 @@ export default (state = initialState, action) => {
     case EDIT_EXPENSE:
       return {
         ...state,
-        // expenses: state.expenses.map((expense) =>
-        //   expense._id === payload.data._id
-        //     ? {
-        //         ...expense,
-        //         name: payload.data.name,
-        //         cost: payload.data.cost,
-        //         description: payload.data.description,
-        //       }
-        //     : expense
-        // ),
+        expenses: state.expenses.map((expense) =>
+          expense._id === payload.data._id
+            ? {
+                ...expense,
+                name: payload.data.name,
+                cost: payload.data.cost,
+                description: payload.data.description,
+              }
+            : expense
+        ),
         isLoading: false,
       };
     case REMOVE_EXPENSE:
-      let chartObject = state.chartData;
-      let {category, cost} = payload ;
+    
+      let {_id, category, cost} = payload ;
       return {
         ...state,
         expenses: state.expenses.filter(
-          (expense) => expense._id !== payload._id
+          (expense) => expense._id !== _id
         ),
-        chartData: {
-          ...state.chartData,
-          [category]: state.chartData[category] - cost,
+        totalByCategoryChartData: {
+          ...state.totalByCategoryChartData,
+          [category]: state.totalByCategoryChartData[category] - cost,
         },
         isLoading: false,
       };
@@ -61,7 +61,7 @@ export default (state = initialState, action) => {
     case GET_TOTAL_BY_CATEGORY:
       return {
         ...state,
-        chartData: payload.data,
+        totalByCategoryChartData: payload.data,
         isLoading: false,
       };
     default:

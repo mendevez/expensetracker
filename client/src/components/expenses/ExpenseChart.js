@@ -1,13 +1,13 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-export const ExpenseChart = ({ chartData }) => {
-  if (!chartData) {
+export const ExpenseChart = ({ totalByCategoryChartData }) => {
+  if (!totalByCategoryChartData) {
     return <div></div>;
   }
 
-  const chartLabels = Object.keys(chartData);
-  const costByCategory = Object.values(chartData); 
+  const chartLabels = Object.keys(totalByCategoryChartData);
+  const costByCategory = Object.values(totalByCategoryChartData); 
 
   const data = {
     labels:  chartLabels,
@@ -36,7 +36,7 @@ export const ExpenseChart = ({ chartData }) => {
         data={data}
         options={{
           title: {
-            text: 'Expenses by category',
+            text: 'Total expenses by category',
             display: true,
             fontSize: 20,
           },

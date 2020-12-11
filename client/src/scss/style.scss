@@ -89,6 +89,7 @@ input:focus {
   margin: 1rem auto;
   display: flex;
   flex-direction: column;
+  z-index: 1200;
   padding: 2rem;
 
   &-errors {
@@ -163,7 +164,7 @@ input:focus {
 
     .expense-chart {
       padding: 0.5rem;
-      height: 300px;
+      height:300px;
       flex: 2;
     }
   }
@@ -201,6 +202,10 @@ input:focus {
   @extend %modal-shared;
   width: 30%;
   height: 40%;
+}
+.modal-edit {
+  @extend %modal-shared;
+  width: 40%;
 }
 
 .modal-delete {

@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
 
   switch (type) {
     case SHOW_MODAL:
-      return { ...state, showModal: true, data: payload.id, modalType: payload.modalType };
+      return { ...state, showModal: true, data: payload.data, modalType: payload.modalType };
 
     case HIDE_MODAL:
       return initialState;

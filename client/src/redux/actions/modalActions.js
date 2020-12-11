@@ -1,9 +1,9 @@
 import { HIDE_MODAL, SHOW_MODAL } from './actionTypes';
 
-export const showModal = (id, modalType) => (dispatch) => {
+export const showModal = (data, modalType) => (dispatch) => {
   dispatch({
     type: SHOW_MODAL,
-    payload: {id, modalType},
+    payload: { data, modalType },
   });
 };
 

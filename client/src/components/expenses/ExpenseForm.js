@@ -12,7 +12,7 @@ const ExpenseForm = ({ initialValues, onSubmit }) => {
   return (
     <form
       onSubmit={handleSubmit(submitData)}
-      className="app-form add-box-shadow add-border-radius"
+      className="app-form add-border-radius"
     >
       {errors.name && (
         <span className="app-form-errors"> Name is required</span>

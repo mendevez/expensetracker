@@ -41,16 +41,14 @@ export default (state = initialState, action) => {
               }
             : expense
         ),
+        [payload.data._id]: { ...payload.data },
         isLoading: false,
       };
     case REMOVE_EXPENSE:
-    
-      let {_id, category, cost} = payload ;
+      let { _id, category, cost } = payload;
       return {
         ...state,
-        expenses: state.expenses.filter(
-          (expense) => expense._id !== _id
-        ),
+        expenses: state.expenses.filter((expense) => expense._id !== _id),
         totalByCategoryChartData: {
           ...state.totalByCategoryChartData,
           [category]: state.totalByCategoryChartData[category] - cost,

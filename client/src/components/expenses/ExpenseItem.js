@@ -22,7 +22,7 @@ const ExpenseItem = ({ expense, showModal }) => {
           <FontAwesomeIcon icon="dollar-sign" size="xs" />
           {cost}
         </h3>
-        <NavLink to={`/edit/${_id}`} className="btn-edit">
+        <NavLink to={`/edit/${expense._id}`} className="btn-edit">
           <FontAwesomeIcon icon="pen" color="white" />
         </NavLink>
         <button onClick={openDeleteModal} className="btn-delete">

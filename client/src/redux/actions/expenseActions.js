@@ -71,7 +71,6 @@ export const removeExpense = (expense) => async (dispatch) => {
       type: REMOVE_EXPENSE,
       payload: expense,
     });
-
   } catch (error) {
     console.log(error);
   }
@@ -80,7 +79,7 @@ export const removeExpense = (expense) => async (dispatch) => {
 export const getTotalByCategory = () => async (dispatch) => {
   try {
     const response = await api.get('expenses/total');
-    
+
     dispatch({
       type: GET_TOTAL_BY_CATEGORY,
       payload: response.data,

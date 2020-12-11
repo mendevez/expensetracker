@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getExpenses,
   getTotalByCategory,
@@ -9,17 +9,18 @@ import ExpenseItem from './ExpenseItem';
 import { NavLink } from 'react-router-dom';
 import ExpenseChart from './ExpenseChart';
 
-const Dashboard = ({
-  getExpenses,
-  getTotalByCategory,
-  expenses: { expenses, isLoading },
-  totalByCategoryChartData
-}) => {
-  useEffect(() => {
-    getExpenses();
-    getTotalByCategory();
-  }, [getExpenses, getTotalByCategory]);
+const Dashboard = () => {
+  const dispatch = useDispatch();
+  const expenses = useSelector((state) => state.expenses.expenses);
+  const isLoading = useSelector((state) => state.expenses.isLoading);
+  const totalByCategoryChartData = useSelector(
+    (state) => state.expenses.totalByCategoryChartData
+  );
 
+  useEffect(() => {
+    dispatch(getExpenses())
+    dispatch(getTotalByCategory());
+  }, [dispatch]);
 
   return (
     <Fragment>
@@ -41,7 +42,7 @@ const Dashboard = ({
                   return <ExpenseItem key={expense._id} expense={expense} />;
                 })}
             </div>
-            <ExpenseChart totalByCategoryChartData={totalByCategoryChartData}/>
+            <ExpenseChart totalByCategoryChartData={totalByCategoryChartData} />
           </div>
         </div>
       )}
@@ -49,12 +50,4 @@ const Dashboard = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  expenses: state.expenses,
-  totalByCategoryChartData: state.expenses.totalByCategoryChartData,
-  modal: state.modal.showModal,
-});
-
-export default connect(mapStateToProps, { getExpenses, getTotalByCategory })(
-  Dashboard
-);
+export default Dashboard;

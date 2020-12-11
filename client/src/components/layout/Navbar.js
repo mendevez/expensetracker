@@ -1,15 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { REGISTER_MODAL, LOGIN_MODAL } from '../modals/modalTypes';
 import { showModal } from '../../redux/actions/modalActions';
 
-export const Navbar = ({ showModal }) => {
+export const Navbar = () => {
+  const dispatch = useDispatch();
+
   const openRegisterModal = () => {
-    showModal(null, REGISTER_MODAL);
+    dispatch(showModal(null, REGISTER_MODAL));
   };
   const openLoginModal = () => {
-    showModal(null, LOGIN_MODAL);
+    dispatch(showModal(null, LOGIN_MODAL));
   };
 
   return (
@@ -36,4 +38,4 @@ export const Navbar = ({ showModal }) => {
   );
 };
 
-export default connect(null, { showModal })(Navbar);
+export default Navbar

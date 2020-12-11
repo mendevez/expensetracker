@@ -1,13 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addExpense } from '../../redux/actions/expenseActions';
 import ExpenseForm from './ExpenseForm';
 
-const AddExpense = ({ addExpense }) => {
+const AddExpense = () => {
   const expense = { cost: '', description: '', name: '', category: '' };
+  const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
-    addExpense(data);
+    dispatch(addExpense(data));
   };
 
   return (
@@ -16,4 +17,4 @@ const AddExpense = ({ addExpense }) => {
     </div>
   );
 };
-export default connect(null, { addExpense })(AddExpense);
+export default AddExpense

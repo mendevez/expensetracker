@@ -32,6 +32,12 @@ input:focus {
   color: #000;
 }
 
+.spinner {
+  width: 250px;
+  margin: auto;
+  display: block;
+}
+
 // Navbar
 .navbar {
   background: $primary-color;
@@ -183,6 +189,7 @@ input:focus {
   text-align: center;
 }
 
+// Modals
 %modal-shared {
   position: fixed;
   top: 50%;
@@ -194,18 +201,12 @@ input:focus {
 
 .modal-register {
   @extend %modal-shared;
-  width: 30%;
-  height: 40%;
+  width: 50%;
 }
 
 .modal-login {
   @extend %modal-shared;
-  width: 30%;
-  height: 40%;
-}
-.modal-edit {
-  @extend %modal-shared;
-  width: 40%;
+  width: 50%;
 }
 
 .modal-delete {

@@ -3,7 +3,7 @@ import { Doughnut } from 'react-chartjs-2';
 
 export const ExpenseChart = ({ totalByCategoryChartData }) => {
   if (!totalByCategoryChartData) {
-    return <div></div>;
+    return null;
   }
 
   const chartLabels = Object.keys(totalByCategoryChartData);

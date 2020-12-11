@@ -1,13 +1,14 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { showModal } from '../../redux/actions/modalActions';
 import { DELETE_MODAL } from '../modals/modalTypes';
-const ExpenseItem = ({ expense, showModal }) => {
+const ExpenseItem = ({ expense }) => {
   const { _id, name, cost } = expense;
+  const dispatch = useDispatch();
   const openDeleteModal = () => {
-    showModal(expense, DELETE_MODAL);
+    dispatch(showModal(expense, DELETE_MODAL));
   };
 
   return (
@@ -32,4 +33,4 @@ const ExpenseItem = ({ expense, showModal }) => {
     </div>
   );
 };
-export default connect(null, { showModal })(ExpenseItem);
+export default ExpenseItem;

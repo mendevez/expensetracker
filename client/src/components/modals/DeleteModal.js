@@ -1,13 +1,19 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { hideModal } from '../../redux/actions/modalActions';
 import { removeExpense } from '../../redux/actions/expenseActions';
-const DeleteModal = ({ removeExpense, hideModal, expenseId }) => {
+const DeleteModal = ( ) => {
+  const expenseId = useSelector((state) => state.modal.data);
+  const dispatch = useDispatch();
+
   const removeCurrentExpense = () => {
-    hideModal();
-    removeExpense(expenseId);
+    dispatch(removeExpense(expenseId));
   };
+
+  const closeModal = () => {
+    dispatch(hideModal())
+  }
   return (
     <div className="modal-delete">
       <div className="modal-delete-header">
@@ -18,7 +24,7 @@ const DeleteModal = ({ removeExpense, hideModal, expenseId }) => {
         <button onClick={removeCurrentExpense} className="btn-modal">
           Yes
         </button>
-        <button onClick={hideModal} className="btn-modal">
+        <button onClick={closeModal} className="btn-modal">
           No
         </button>
       </div>
@@ -26,12 +32,4 @@ const DeleteModal = ({ removeExpense, hideModal, expenseId }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    expenseId: state.modal.data,
-  };
-};
-
-export default connect(mapStateToProps, { removeExpense, hideModal })(
-  DeleteModal
-);
+export default DeleteModal;

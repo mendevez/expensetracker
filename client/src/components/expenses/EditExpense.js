@@ -1,18 +1,20 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getExpense, editExpense } from '../../redux/actions/expenseActions';
 import Spinner from '../layout/Spinner';
 import ExpenseForm from './ExpenseForm';
-const EditExpense = ({ match, expense, getExpense, editExpense }) => {
+const EditExpense = ({ match }) => {
   const id = match.params.id;
+  const dispatch = useDispatch();
+  const expense = useSelector((state) => state.expenses[id]);
 
   useEffect(() => {
-    getExpense(id);
-  }, [getExpense, id]);
+    dispatch(getExpense(id));
+  }, [id, dispatch]);
 
   const onSubmit = (data) => {
-    editExpense(id, data);
+    dispatch(editExpense(id, data));
   };
 
   if (!expense) {
@@ -22,10 +24,4 @@ const EditExpense = ({ match, expense, getExpense, editExpense }) => {
   return <ExpenseForm initialValues={expense} onSubmit={onSubmit} />;
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  expense: state.expenses[ownProps.match.params.id],
-});
-
-export default connect(mapStateToProps, { getExpense, editExpense })(
-  EditExpense
-);
+export default EditExpense;

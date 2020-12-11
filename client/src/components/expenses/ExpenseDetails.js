@@ -1,16 +1,17 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { getExpense } from '../../redux/actions/expenseActions';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
 import Spinner from '../layout/Spinner';
 
-const ExpenseDetails = ({ getExpense, expense, match }) => {
+const ExpenseDetails = ({ match }) => {
   const id = match.params.id;
-
+  const dispatch = useDispatch();
+  const expense = useSelector((state) => state.expenses[id]);
   useEffect(() => {
-    getExpense(id);
-  }, [getExpense, id]);
+    dispatch(getExpense(id));
+  }, [dispatch, id]);
 
   if (!expense) {
     return <Spinner />;
@@ -26,8 +27,5 @@ const ExpenseDetails = ({ getExpense, expense, match }) => {
     </div>
   );
 };
-const mapStateToProps = (state,ownProps) => ({
-  expense: state.expenses[ownProps.match.params.id],
-});
 
-export default connect(mapStateToProps, { getExpense })(ExpenseDetails);
+export default ExpenseDetails;

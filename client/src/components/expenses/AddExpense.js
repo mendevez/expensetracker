@@ -17,4 +17,5 @@ const AddExpense = () => {
     </div>
   );
 };
+
 export default AddExpense

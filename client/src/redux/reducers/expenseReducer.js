@@ -10,7 +10,7 @@ import {
 const initialState = {
   expenses: [],
   isLoading: true,
-  totalByCategoryChartData: [],
+  totalByCategoryChartData: {},
 };
 
 export default (state = initialState, action) => {

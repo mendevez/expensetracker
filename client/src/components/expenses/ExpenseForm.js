@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
 const ExpenseForm = ({ initialValues, onSubmit }) => {
@@ -45,7 +46,7 @@ const ExpenseForm = ({ initialValues, onSubmit }) => {
         <option value="Personal">Personal</option>
         <option value="Other">Other</option>
       </select>
-      
+
       <input
         className="app-form-input "
         placeholder="Name"
@@ -77,4 +78,10 @@ const ExpenseForm = ({ initialValues, onSubmit }) => {
     </form>
   );
 };
+
+ExpenseForm.propTypes = {
+  initialValues: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
+
 export default ExpenseForm;

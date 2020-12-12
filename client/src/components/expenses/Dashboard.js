@@ -7,7 +7,7 @@ import {
 import Spinner from '../layout/Spinner';
 import ExpenseItem from './ExpenseItem';
 import { NavLink } from 'react-router-dom';
-import ExpenseChart from './ExpenseChart';
+import TotalByCategoryChart from './TotalByCategoryChart';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const Dashboard = () => {
                   return <ExpenseItem key={expense._id} expense={expense} />;
                 })}
             </div>
-            <ExpenseChart totalByCategoryChartData={totalByCategoryChartData} />
+            <TotalByCategoryChart totalByCategoryChartData={totalByCategoryChartData} />
           </div>
         </div>
       )}

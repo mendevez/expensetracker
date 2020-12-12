@@ -1,16 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
 
-export const ExpenseChart = ({ totalByCategoryChartData }) => {
+export const TotalByCategoryChart = ({ totalByCategoryChartData }) => {
   if (!totalByCategoryChartData) {
     return null;
   }
+  console.log(typeof(totalByCategoryChartData))
 
   const chartLabels = Object.keys(totalByCategoryChartData);
-  const costByCategory = Object.values(totalByCategoryChartData); 
+  const costByCategory = Object.values(totalByCategoryChartData);
 
   const data = {
-    labels:  chartLabels,
+    labels: chartLabels,
     datasets: [
       {
         data: costByCategory,
@@ -24,7 +26,6 @@ export const ExpenseChart = ({ totalByCategoryChartData }) => {
           '#6e0f0f',
           '#2ab7ca',
           '#b3cde0',
-  
         ],
       },
     ],
@@ -48,4 +49,8 @@ export const ExpenseChart = ({ totalByCategoryChartData }) => {
   );
 };
 
-export default ExpenseChart;
+TotalByCategoryChart.propTypes = {
+  totalByCategoryChartData: PropTypes.object.isRequired
+};
+
+export default TotalByCategoryChart;

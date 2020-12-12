@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -33,4 +34,8 @@ const ExpenseItem = ({ expense }) => {
     </div>
   );
 };
+
+ExpenseItem.propTypes = {
+  expense: PropTypes.object.isRequired
+}
 export default ExpenseItem;

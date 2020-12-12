@@ -12,7 +12,7 @@ import TotalByCategoryChart from '../charts/TotalByCategoryChart';
 const Dashboard = () => {
   const dispatch = useDispatch();
   const expenses = useSelector((state) => state.expenses.expenses);
-  const isLoading = useSelector((state) => state.expenses.isLoading);
+  const isLoading = useSelector((state) => state.charts.isLoading);
   const totalByCategoryChartData = useSelector(
     (state) => state.charts.totalByCategoryChartData
   );

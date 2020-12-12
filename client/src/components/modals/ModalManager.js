@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import DeleteModal from './DeleteModal';
-import RegisterModal from './RegisterModal';
+import DeleteModal from '../expenses/DeleteModal';
+import RegisterModal from '../auth/RegisterModal';
 import { DELETE_MODAL, LOGIN_MODAL, REGISTER_MODAL } from './modalTypes';
 import { hideModal } from '../../redux/actions/modalActions';
-import LoginModal from './LoginModal';
+import LoginModal from '../auth/LoginModal';
 
 const ModalManager = () => {
   const openModal = useSelector((state) => state.modal.showModal);

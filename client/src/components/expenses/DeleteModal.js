@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideModal } from '../../redux/actions/modalActions';
 import { removeExpense } from '../../redux/actions/expenseActions';
-const DeleteModal = ( ) => {
-  const expenseId = useSelector((state) => state.modal.data);
+const DeleteModal = () => {
+  const expense = useSelector((state) => state.modal.data);
   const dispatch = useDispatch();
 
   const removeCurrentExpense = () => {
-    dispatch(removeExpense(expenseId));
+    dispatch(removeExpense(expense));
   };
 
   const closeModal = () => {
@@ -19,7 +19,7 @@ const DeleteModal = ( ) => {
       <div className="modal-delete-header">
         <FontAwesomeIcon size="5x" color="#ffd700" icon="times-circle" />
       </div>
-      <h3 className="modal-delete-title">Are you sure you want to remove?</h3>
+      <h3 className="modal-delete-title">Are you sure you want to remove {expense.name}</h3>
       <div className="modal-delete-buttons">
         <button onClick={removeCurrentExpense} className="btn-modal">
           Yes

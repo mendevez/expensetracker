@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
         totalByCategoryChartData: payload.data,
         isLoading: false,
       };
-
+        
     default:
       return state;
   }

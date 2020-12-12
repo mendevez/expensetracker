@@ -7,14 +7,14 @@ import {
 import Spinner from '../layout/Spinner';
 import ExpenseItem from './ExpenseItem';
 import { NavLink } from 'react-router-dom';
-import TotalByCategoryChart from './TotalByCategoryChart';
+import TotalByCategoryChart from '../charts/TotalByCategoryChart';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const expenses = useSelector((state) => state.expenses.expenses);
   const isLoading = useSelector((state) => state.expenses.isLoading);
   const totalByCategoryChartData = useSelector(
-    (state) => state.expenses.totalByCategoryChartData
+    (state) => state.charts.totalByCategoryChartData
   );
 
   useEffect(() => {

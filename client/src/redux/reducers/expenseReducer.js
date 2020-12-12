@@ -4,7 +4,6 @@ import {
   REMOVE_EXPENSE,
   GET_EXPENSE,
   EDIT_EXPENSE,
-  GET_TOTAL_BY_CATEGORY,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -56,12 +55,6 @@ export default (state = initialState, action) => {
         isLoading: false,
       };
 
-    case GET_TOTAL_BY_CATEGORY:
-      return {
-        ...state,
-        totalByCategoryChartData: payload.data,
-        isLoading: false,
-      };
     default:
       return state;
   }

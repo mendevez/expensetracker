@@ -6,7 +6,6 @@ export const TotalByCategoryChart = ({ totalByCategoryChartData }) => {
   if (!totalByCategoryChartData) {
     return null;
   }
-  console.log(typeof(totalByCategoryChartData))
 
   const chartLabels = Object.keys(totalByCategoryChartData);
   const costByCategory = Object.values(totalByCategoryChartData);
@@ -50,7 +49,7 @@ export const TotalByCategoryChart = ({ totalByCategoryChartData }) => {
 };
 
 TotalByCategoryChart.propTypes = {
-  totalByCategoryChartData: PropTypes.object.isRequired
+  totalByCategoryChartData: PropTypes.object.isRequired,
 };
 
 export default TotalByCategoryChart;

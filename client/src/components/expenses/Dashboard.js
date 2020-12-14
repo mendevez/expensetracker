@@ -5,9 +5,9 @@ import {
   getTotalByCategory,
 } from '../../redux/actions/expenseActions';
 import Spinner from '../layout/Spinner';
-import ExpenseItem from './ExpenseItem';
 import { NavLink } from 'react-router-dom';
 import TotalByCategoryChart from '../charts/TotalByCategoryChart';
+import ExpenseList from './ExpenseList';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Dashboard = () => {
   );
 
   useEffect(() => {
-    dispatch(getExpenses())
+    dispatch(getExpenses());
     dispatch(getTotalByCategory());
   }, [dispatch]);
 
@@ -35,14 +35,10 @@ const Dashboard = () => {
           </div>
 
           <div className="dashboard-content">
-            <div className="expense-list add-margin-y add-box-shadow">
-              <h1>Expenses</h1>
-              {expenses &&
-                expenses.map((expense) => {
-                  return <ExpenseItem key={expense._id} expense={expense} />;
-                })}
-            </div>
-            <TotalByCategoryChart totalByCategoryChartData={totalByCategoryChartData} />
+            <ExpenseList expenses={expenses} />
+            <TotalByCategoryChart
+              totalByCategoryChartData={totalByCategoryChartData}
+            />
           </div>
         </div>
       )}

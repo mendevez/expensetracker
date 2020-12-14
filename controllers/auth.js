@@ -7,7 +7,7 @@ const User = require('../models/User');
 // @access      Private
 exports.getUser = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.user.id).select('-password');
-  res.json({ success: true, data: user });
+  res.status(200).json({ success: true, data: user });
 });
 
 // @desc        Register new user

@@ -135,6 +135,13 @@ input:focus {
   &-actions {
     padding: 2.5rem;
   }
+  &-total-cost {
+    font-size: 0.8rem;
+    padding:0.5rem;
+    text-transform: uppercase;
+    background: $primary-color;
+    color: $light-color;
+  }
 
   &-content {
     display: flex;

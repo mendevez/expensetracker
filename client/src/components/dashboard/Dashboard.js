@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   getExpenses,
   getTotalByCategory,
+  getTotalCost,
 } from '../../redux/actions/expenseActions';
 import Spinner from '../layout/Spinner';
 import TotalByCategoryChart from '../charts/TotalByCategoryChart';
@@ -12,13 +13,14 @@ import DashboardActions from './DashboardActions';
 const Dashboard = () => {
   const dispatch = useDispatch();
   const expenses = useSelector((state) => state.expenses.expenses);
-  const isLoading = useSelector((state) => state.charts.isLoading);
+  const isLoading = useSelector((state) => state.expenses.isLoading);
   const totalByCategoryChartData = useSelector(
-    (state) => state.charts.totalByCategoryChartData
+    (state) => state.expenses.totalByCategoryChartData
   );
 
   useEffect(() => {
     dispatch(getExpenses());
+    dispatch(getTotalCost())
     dispatch(getTotalByCategory());
   }, [dispatch]);
 

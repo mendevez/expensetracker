@@ -16,5 +16,5 @@ router.route('/').get(getExpenses).post(addExpense);
 router.route('/totalbycategory').get(getTotalByCategory);
 router.route('/total').get(getTotalCost);
 router.route('/:id').get(getExpense).put(updateExpense).delete(deleteExpense);
-
+  
 module.exports = router;

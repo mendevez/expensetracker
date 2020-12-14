@@ -79,11 +79,9 @@ exports.getTotalByCategory = asyncHandler(async (req, res, next) => {
 // @route       GET /api/v1/expenses/total
 // @access      Private
 exports.getTotalCost = asyncHandler(async (req, res, next) => {
-  const result = await Expense.aggregate([
-    
+  const totalCost = await Expense.aggregate([
     { $group: { _id: null, totalCost: { $sum: '$cost' } } },
-    
   ]);
 
-  res.status(200).json({ success: true, data: result });
+  res.status(200).json({ success: true, data: totalCost[0] });
 });

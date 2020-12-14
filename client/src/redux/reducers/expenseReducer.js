@@ -4,12 +4,15 @@ import {
   REMOVE_EXPENSE,
   GET_EXPENSE,
   EDIT_EXPENSE,
+  GET_TOTAL_BY_CATEGORY,
+  GET_TOTAL_COST,
 } from '../actions/actionTypes';
 
 const initialState = {
   expenses: [],
   isLoading: true,
   totalByCategoryChartData: {},
+  totalCost: null,
 };
 
 export default (state = initialState, action) => {
@@ -44,7 +47,7 @@ export default (state = initialState, action) => {
         isLoading: false,
       };
     case REMOVE_EXPENSE:
-      let { _id, category, cost } = payload;
+      const { _id, category, cost } = payload;
       return {
         ...state,
         expenses: state.expenses.filter((expense) => expense._id !== _id),
@@ -52,6 +55,19 @@ export default (state = initialState, action) => {
           ...state.totalByCategoryChartData,
           [category]: state.totalByCategoryChartData[category] - cost,
         },
+        totalCost: state.totalCost - cost,
+        isLoading: false,
+      };
+    case GET_TOTAL_COST:
+      return {
+        ...state,
+        totalCost: payload.data.totalCost,
+      };
+
+    case GET_TOTAL_BY_CATEGORY:
+      return {
+        ...state,
+        totalByCategoryChartData: payload.data,
         isLoading: false,
       };
 

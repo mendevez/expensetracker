@@ -5,6 +5,7 @@ import {
   GET_EXPENSE,
   EDIT_EXPENSE,
   GET_TOTAL_BY_CATEGORY,
+  GET_TOTAL_COST,
 } from './actionTypes';
 import api from '../../utils/api';
 import history from '../../history';
@@ -70,6 +71,19 @@ export const removeExpense = (expense) => async (dispatch) => {
     dispatch({
       type: REMOVE_EXPENSE,
       payload: expense,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getTotalCost = () => async (dispatch) => {
+  try {
+    const response = await api.get('expenses/total');
+    
+    dispatch({
+      type: GET_TOTAL_COST,
+      payload: response.data,
     });
   } catch (error) {
     console.log(error);

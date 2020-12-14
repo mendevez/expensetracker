@@ -9,3 +9,4 @@ export const HIDE_MODAL = 'HIDE_MODAL';
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOAD_USER = 'LOAD_USER';
+export const GET_TOTAL_COST = 'GET_TOTAL_COST';

@@ -50,14 +50,28 @@
   }
   &-delete {
     @extend %btn-shared;
-    background: #b22222;
     border-radius: 5px;
+    background: 	$tertiary-color;
+    .icon-delete { 
+      color:$light-color;
+    }
+    &:hover {
+      background: #eb1010;;
+    }
+
   }
   &-edit {
     padding: 0.4rem 0.8rem;
     margin-right: 5px;
     border-radius: 5px;
-    background: $green-color;
+    background: $tertiary-color;
+
+    .icon-edit {
+      color:$light-color;
+    }
+    &:hover {
+      background: $green-color;
+    }
   }
   &-modal {
     @extend %btn-shared;

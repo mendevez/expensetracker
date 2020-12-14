@@ -25,10 +25,10 @@ const ExpenseItem = ({ expense }) => {
           {cost}
         </h3>
         <NavLink to={`/edit/${expense._id}`} className="btn-edit">
-          <FontAwesomeIcon icon="pen" color="white" />
+          <FontAwesomeIcon icon="pen" className="icon-edit" />
         </NavLink>
         <button onClick={openDeleteModal} className="btn-delete">
-          <FontAwesomeIcon icon="trash" color="white" />
+          <FontAwesomeIcon icon="trash" className="icon-delete" />
         </button>
       </div>
     </div>

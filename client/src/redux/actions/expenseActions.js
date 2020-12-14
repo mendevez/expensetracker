@@ -78,7 +78,7 @@ export const removeExpense = (expense) => async (dispatch) => {
 
 export const getTotalByCategory = () => async (dispatch) => {
   try {
-    const response = await api.get('expenses/total');
+    const response = await api.get('expenses/totalbycategory');
 
     dispatch({
       type: GET_TOTAL_BY_CATEGORY,

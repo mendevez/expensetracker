@@ -27,23 +27,6 @@ exports.getExpense = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: expense });
 });
 
-// @desc        Sum all expenses by category
-// @route       GET /api/v1/expenses/total
-// @access      Private
-exports.getTotalByCategory = asyncHandler(async (req, res, next) => {
-
-  const result = await Expense.aggregate([
-    {
-      $match: {},
-    },
-    { $group: { _id: '$category', total: { $sum: '$cost' } } },
-  ]);
-
-  const categoriesObject =  helperFunctions.createCategoriesObject(result);
-
-  res.status(200).json({ success: true, data: categoriesObject });
-});
-
 // @desc        Add new expense
 // @route       POST /api/v1/expenses/:id
 // @access      Private
@@ -77,5 +60,32 @@ exports.deleteExpense = asyncHandler(async (req, res, next) => {
     return res.status(400).json({ success: false });
   }
   res.status(200).json({ success: true, data: {} });
+});
 
+// @desc        Sum all expenses by category
+// @route       GET /api/v1/expenses/totalbycategory
+// @access      Private
+exports.getTotalByCategory = asyncHandler(async (req, res, next) => {
+  const result = await Expense.aggregate([
+    { $group: { _id: '$category', total: { $sum: '$cost' } } },
+  ]);
+
+  const categoriesObject = helperFunctions.createCategoriesObject(result);
+
+  res.status(200).json({ success: true, data: categoriesObject });
+});
+
+// @desc        Sum all expenses
+// @route       GET /api/v1/expenses/total
+// @access      Private
+exports.getTotalCost = asyncHandler(async (req, res, next) => {
+  const result = await Expense.aggregate([
+    
+    { $group: { _id: null, totalCost: { $sum: '$cost' } } },
+      
+    
+  ]);
+
+  res.status(200).json({ success: true, data: result });
+  console.log(result);
 });

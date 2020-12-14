@@ -15,7 +15,7 @@ const Dashboard = () => {
   const expenses = useSelector((state) => state.expenses.expenses);
   const isLoading = useSelector((state) => state.expenses.isLoading);
   const totalByCategoryChartData = useSelector(
-    (state) => state.expenses.totalByCategoryChartData
+    (state) => state.charts.totalByCategoryChartData
   );
 
   useEffect(() => {

@@ -5,9 +5,9 @@ import {
   getTotalByCategory,
 } from '../../redux/actions/expenseActions';
 import Spinner from '../layout/Spinner';
-import { NavLink } from 'react-router-dom';
 import TotalByCategoryChart from '../charts/TotalByCategoryChart';
-import ExpenseList from './ExpenseList';
+import ExpenseList from '../expenses/ExpenseList';
+import DashboardActions from './DashboardActions';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -28,12 +28,7 @@ const Dashboard = () => {
         <Spinner />
       ) : (
         <div className="dashboard">
-          <div className="dashboard-options">
-            <NavLink className="btn-dashboard" to="/add">
-              Add New Expense
-            </NavLink>
-          </div>
-
+          <DashboardActions />
           <div className="dashboard-content">
             <ExpenseList expenses={expenses} />
             <TotalByCategoryChart

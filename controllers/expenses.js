@@ -7,7 +7,7 @@ const helperFunctions = require('../utils/helperFunctions');
 // @route       GET /api/v1/expenses
 // @access      Private
 exports.getExpenses = asyncHandler(async (req, res, next) => {
-  const expenses = await Expense.find();
+  const expenses = await Expense.find({ userId: req.user.id });
   res
     .status(200)
     .json({ success: true, count: expenses.length, data: expenses });
@@ -34,7 +34,7 @@ exports.addExpense = asyncHandler(async (req, res, next) => {
   const { name } = req.body;
   const checkIfExists = await Expense.find({ name });
 
-  if (checkIfExists) {
+  if (checkIfExists.length > 0) {
     return next(
       new ErrorResponse(
         `Expense with name: ${name} already exists. Please enter a different name`,
@@ -42,8 +42,9 @@ exports.addExpense = asyncHandler(async (req, res, next) => {
       )
     );
   }
-  const expense = await Expense.create(req.body);
-  res.status(201).json({ success: true, data: expense });
+  const expense = { ...req.body, userId: req.user.id };
+  const response = await Expense.create(expense);
+  res.status(201).json({ success: true, data: response });
 });
 
 // @desc        Update expense
@@ -82,6 +83,7 @@ exports.deleteExpense = asyncHandler(async (req, res, next) => {
 // @access      Private
 exports.getTotalByCategory = asyncHandler(async (req, res, next) => {
   const result = await Expense.aggregate([
+    { $match: { userId: req.user.id } },
     { $group: { _id: '$category', total: { $sum: '$cost' } } },
   ]);
 
@@ -95,6 +97,7 @@ exports.getTotalByCategory = asyncHandler(async (req, res, next) => {
 // @access      Private
 exports.getTotalCost = asyncHandler(async (req, res, next) => {
   const totalCost = await Expense.aggregate([
+    { $match: { userId: req.user.id } },
     { $group: { _id: null, totalCost: { $sum: '$cost' } } },
   ]);
 

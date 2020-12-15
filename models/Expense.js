@@ -7,6 +7,10 @@ const ExpenseSchema = new mongoose.Schema({
     unique: true,
     maxlength: [50, 'Name can not be more than 50 characters'],
   },
+  userId: {
+    type: String,
+    require: true
+  },
   description: {
     type: String,
     maxlength: [500, 'Description can not be more than 500 characters'],

@@ -21,7 +21,7 @@ exports.getExpense = asyncHandler(async (req, res, next) => {
 
   if (!expense) {
     return next(
-      new ErrorResponse(`Expense with id: ${req.params.id} not found`)
+      new ErrorResponse(`Expense with id: ${req.params.id} not found`, 404)
     );
   }
   res.status(200).json({ success: true, data: expense });
@@ -31,6 +31,17 @@ exports.getExpense = asyncHandler(async (req, res, next) => {
 // @route       POST /api/v1/expenses/:id
 // @access      Private
 exports.addExpense = asyncHandler(async (req, res, next) => {
+  const { name } = req.body;
+  const checkIfExists = await Expense.find({ name });
+
+  if (checkIfExists) {
+    return next(
+      new ErrorResponse(
+        `Expense with name: ${name} already exists. Please enter a different name`,
+        409
+      )
+    );
+  }
   const expense = await Expense.create(req.body);
   res.status(201).json({ success: true, data: expense });
 });
@@ -45,7 +56,9 @@ exports.updateExpense = asyncHandler(async (req, res, next) => {
   });
 
   if (!expense) {
-    return res.status(400).json({ success: false });
+    return next(
+      new ErrorResponse(`Expense with id: ${req.params.id} not found`, 404)
+    );
   }
   res.status(200).json({ success: true, data: expense });
 });
@@ -57,7 +70,9 @@ exports.deleteExpense = asyncHandler(async (req, res, next) => {
   const expense = await Expense.findByIdAndDelete(req.params.id);
 
   if (!expense) {
-    return res.status(400).json({ success: false });
+    return next(
+      new ErrorResponse(`Expense with id: ${req.params.id} not found`, 404)
+    );
   }
   res.status(200).json({ success: true, data: {} });
 });

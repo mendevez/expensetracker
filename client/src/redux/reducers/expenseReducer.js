@@ -6,6 +6,7 @@ import {
   EDIT_EXPENSE,
   GET_TOTAL_BY_CATEGORY,
   GET_TOTAL_COST,
+  LOGOUT,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -69,6 +70,15 @@ export default (state = initialState, action) => {
         ...state,
         totalByCategoryChartData: payload.data,
         isLoading: false,
+      };
+
+    case LOGOUT:
+      return {
+        ...state,
+        expenses: [],
+        isLoading: true,
+        totalByCategoryChartData: {},
+        totalCost: null,
       };
 
     default:

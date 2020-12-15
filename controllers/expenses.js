@@ -31,17 +31,6 @@ exports.getExpense = asyncHandler(async (req, res, next) => {
 // @route       POST /api/v1/expenses/:id
 // @access      Private
 exports.addExpense = asyncHandler(async (req, res, next) => {
-  const { name } = req.body;
-  const checkIfExists = await Expense.find({ name });
-
-  if (checkIfExists.length > 0) {
-    return next(
-      new ErrorResponse(
-        `Expense with name: ${name} already exists. Please enter a different name`,
-        409
-      )
-    );
-  }
   const expense = { ...req.body, userId: req.user.id };
   const response = await Expense.create(expense);
   res.status(201).json({ success: true, data: response });

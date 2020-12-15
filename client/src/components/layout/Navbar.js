@@ -8,6 +8,7 @@ import { logout } from '../../redux/actions/authActions';
 export const Navbar = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isLoading = useSelector((state) => state.auth.isLoading);
 
   const openRegisterModal = () => {
     dispatch(showModal(null, REGISTER_MODAL));
@@ -52,7 +53,7 @@ export const Navbar = () => {
         </NavLink>
       </h1>
 
-      {isAuthenticated ? AuthenticatedLinks : GuestLinks}
+      {!isLoading &&(isAuthenticated ? AuthenticatedLinks : GuestLinks)}
     </nav>
   );
 };

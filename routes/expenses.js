@@ -6,15 +6,20 @@ const {
   updateExpense,
   deleteExpense,
   getTotalByCategory,
-  getTotalCost
+  getTotalCost,
 } = require('../controllers/expenses');
+const { authGuard } = require('../middleware/auth');
 
 // Initialize Router
 const router = express.Router();
 
-router.route('/').get(getExpenses).post(addExpense);
-router.route('/totalbycategory').get(getTotalByCategory);
-router.route('/total').get(getTotalCost);
-router.route('/:id').get(getExpense).put(updateExpense).delete(deleteExpense);
-  
+router.route('/').get(authGuard, getExpenses).post(authGuard, addExpense);
+router.route('/totalbycategory').get(authGuard, getTotalByCategory);
+router.route('/total').get(authGuard, getTotalCost);
+router
+  .route('/:id')
+  .get(authGuard, getExpense)
+  .put(updateExpense)
+  .delete(deleteExpense);
+
 module.exports = router;

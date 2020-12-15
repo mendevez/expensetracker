@@ -12,7 +12,6 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import { loadUser } from './redux/actions/authActions';
 
-
 const App = () => {
   useEffect(() => {
     setAuthenticationToken(localStorage.token);

@@ -1,10 +1,14 @@
-import { REGISTER_USER, LOGIN_USER, LOAD_USER } from '../actions/actionTypes';
+import {
+  REGISTER_USER,
+  LOGIN_USER,
+  LOAD_USER,
+  LOGOUT,
+} from '../actions/actionTypes';
 
 const initialState = {
   token: localStorage.getItem('token'),
   user: null,
   isAuthenticated: false,
-  isLoading: true,
 };
 
 export default (state = initialState, action) => {
@@ -17,7 +21,6 @@ export default (state = initialState, action) => {
         ...state,
         token: payload.token,
         isAuthenticated: true,
-        isLoading: false,
       };
     case LOGIN_USER:
       localStorage.setItem('token', payload.token);
@@ -25,14 +28,20 @@ export default (state = initialState, action) => {
         ...state,
         token: payload.token,
         isAuthenticated: true,
-        isLoading: false,
+      };
+    case LOGOUT:
+      localStorage.removeItem('token');
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        user: null,
       };
     case LOAD_USER:
       return {
-          ...state, 
-          isAuthenticated: true,
-          isLoading: false, 
-          user: payload.data
+        ...state,
+        isAuthenticated: true,
+        user: payload.data,
       };
     default:
       return state;

@@ -1,8 +1,7 @@
 import api from '../../utils/api';
-import { REGISTER_USER, LOGIN_USER, LOAD_USER } from './actionTypes';
+import { REGISTER_USER, LOGIN_USER, LOAD_USER, LOGOUT } from './actionTypes';
 import { hideModal } from './modalActions';
 import setAuthenticationToken from '../../utils/setAuthToken';
-import history from '../../history';
 
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
@@ -29,7 +28,6 @@ export const loginWithUserNameAndPassword = (formData) => async (dispatch) => {
     });
     dispatch(hideModal());
     dispatch(loadUser());
-    history.push('/dashboard');
   } catch (error) {
     console.log(error);
   }
@@ -44,8 +42,13 @@ export const registerNewUser = (formData) => async (dispatch) => {
     });
     dispatch(hideModal());
     dispatch(loadUser());
-    history.push('/dashboard');
   } catch (error) {
     console.log(error);
   }
+};
+
+export const logout = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT,
+  });
 };

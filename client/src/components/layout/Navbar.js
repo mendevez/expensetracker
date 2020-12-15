@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { REGISTER_MODAL, LOGIN_MODAL } from '../modals/modalTypes';
 import { showModal } from '../../redux/actions/modalActions';
+import { logout } from '../../redux/actions/authActions';
 
 export const Navbar = () => {
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const openRegisterModal = () => {
     dispatch(showModal(null, REGISTER_MODAL));
@@ -13,6 +15,34 @@ export const Navbar = () => {
   const openLoginModal = () => {
     dispatch(showModal(null, LOGIN_MODAL));
   };
+  const logoutUser = () => {
+    dispatch(logout());
+  };
+
+  const GuestLinks = (
+    <ul>
+      <li>
+        <a className="navlink" href="#!" onClick={openRegisterModal}>
+          Register
+        </a>
+      </li>
+      <li>
+        <a className="navlink" href="#!" onClick={openLoginModal}>
+          Login
+        </a>
+      </li>
+    </ul>
+  );
+
+  const AuthenticatedLinks = (
+    <ul>
+      <li>
+        <a className="navlink" href="#!" onClick={logoutUser}>
+          Logout
+        </a>
+      </li>
+    </ul>
+  );
 
   return (
     <nav className="navbar">
@@ -22,20 +52,9 @@ export const Navbar = () => {
         </NavLink>
       </h1>
 
-      <ul>
-        <li>
-          <NavLink to="" className="navlink" onClick={openRegisterModal}>
-            Register
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="navlink" to="" onClick={openLoginModal}>
-            Login
-          </NavLink>
-        </li>
-      </ul>
+      {isAuthenticated ? AuthenticatedLinks : GuestLinks}
     </nav>
   );
 };
 
-export default Navbar
+export default Navbar;

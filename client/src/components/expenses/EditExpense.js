@@ -8,6 +8,7 @@ const EditExpense = ({ match }) => {
   const id = match.params.id;
   const dispatch = useDispatch();
   const expense = useSelector((state) => state.expenses[id]);
+  const title = 'Edit expense';
 
   useEffect(() => {
     dispatch(getExpense(id));
@@ -21,7 +22,9 @@ const EditExpense = ({ match }) => {
     return <Spinner />;
   }
 
-  return <ExpenseForm initialValues={expense} onSubmit={onSubmit} />;
+  return (
+    <ExpenseForm initialValues={expense} onSubmit={onSubmit} title={title} />
+  );
 };
 
 export default EditExpense;

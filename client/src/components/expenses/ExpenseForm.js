@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
-const ExpenseForm = ({ initialValues, onSubmit }) => {
+const ExpenseForm = ({ initialValues, onSubmit, title }) => {
   const { register, handleSubmit, errors } = useForm({
     defaultValues: initialValues,
   });
@@ -13,18 +13,9 @@ const ExpenseForm = ({ initialValues, onSubmit }) => {
   return (
     <form
       onSubmit={handleSubmit(submitData)}
-      className="app-form add-border-radius"
+      className="app-form add-border-radius add-box-shadow"
     >
-      {errors.name && (
-        <span className="app-form-errors"> Name is required</span>
-      )}
-      {errors.cost && (
-        <span className="app-form-errors"> Cost is required</span>
-      )}
-      {errors.category && (
-        <span className="app-form-errors">Please select a category</span>
-      )}
-
+      <h3 className="app-form-title">{title}</h3>
       <select
         placeholder="Category"
         className="app-form-input"
@@ -46,16 +37,26 @@ const ExpenseForm = ({ initialValues, onSubmit }) => {
         <option value="Personal">Personal</option>
         <option value="Other">Other</option>
       </select>
+      {errors.category && (
+        <span className="app-form-error">Please select a category</span>
+      )}
 
       <input
-        className="app-form-input "
+        className="app-form-input"
         placeholder="Name"
         name="name"
         type="text"
         ref={register({
           required: true,
+          pattern: /[a-zA-z]+/,
         })}
       />
+      {errors.name?.type === 'required' && (
+        <span className="app-form-error"> Name is required</span>
+      )}
+      {errors.name?.type === 'pattern' && (
+        <span className="app-form-error"> Name cannot be a number </span>
+      )}
       <input
         className="app-form-input "
         placeholder="Cost"
@@ -63,8 +64,13 @@ const ExpenseForm = ({ initialValues, onSubmit }) => {
         type="text"
         ref={register({
           required: true,
+          pattern: /^[0-9]*$/,
         })}
       />
+      {errors.cost && <span className="app-form-error"> Cost is required</span>}
+      {errors.cost && (
+        <span className="app-form-error"> Cost must be a number </span>
+      )}
 
       <input
         className="app-form-input"
@@ -82,6 +88,7 @@ const ExpenseForm = ({ initialValues, onSubmit }) => {
 ExpenseForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default ExpenseForm;

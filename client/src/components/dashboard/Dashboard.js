@@ -9,7 +9,6 @@ import Spinner from '../layout/Spinner';
 import TotalByCategoryChart from '../charts/TotalByCategoryChart';
 import ExpenseList from '../expenses/ExpenseList';
 import DashboardActions from './DashboardActions';
-import { Redirect } from 'react-router-dom';
 
 const Dashboard = () => {
   const dispatch = useDispatch();

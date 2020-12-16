@@ -1,3 +1,5 @@
+/*eslint no-undef: 0*/
+
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from 'react-hook-form';
@@ -13,7 +15,7 @@ export const LoginModal = () => {
   };
   return (
     <div className="modal-login add-border-radius">
-      <form className="app-form" onSubmit={handleSubmit(submitData)}>
+      <form className="modal-form" onSubmit={handleSubmit(submitData)}>
         <h1 className="app-form-title">
           <FontAwesomeIcon icon="user" /> Login
         </h1>
@@ -25,9 +27,15 @@ export const LoginModal = () => {
           type="text"
           ref={register({
             required: true,
+            pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
           })}
         />
-        {errors.email && <span>Please enter email</span>}
+        {errors.email?.type === 'required' && (
+          <span className="app-form-error">Email is required</span>
+        )}
+        {errors.email?.type === 'pattern' && (
+          <span className="app-form-error">Please enter a valid email</span>
+        )}
         <input
           className="app-form-input"
           placeholder="Password"

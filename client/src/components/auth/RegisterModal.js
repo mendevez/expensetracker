@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from 'react-hook-form';
@@ -12,7 +13,7 @@ const RegisterModal = () => {
   };
   return (
     <div className="modal-register add-border-radius">
-      <form className="app-form" onSubmit={handleSubmit(submitData)}>
+      <form className="modal-form" onSubmit={handleSubmit(submitData)}>
         <h1 className="app-form-title">
           <FontAwesomeIcon icon="user" /> Register
         </h1>
@@ -23,9 +24,17 @@ const RegisterModal = () => {
           type="text"
           ref={register({
             required: true,
+            pattern: /[a-zA-z]+/,
           })}
         />
-        {errors.name && <span>Please enter name</span>}
+        {errors.name?.type === 'required' && (
+          <span className="app-form-error">Please enter name</span>
+        )}
+        {errors.name?.type === 'pattern' && (
+          <span className="app-form-error">
+            Name can only consist of alphabetic characters
+          </span>
+        )}
         <input
           className="app-form-input "
           name="email"
@@ -33,9 +42,15 @@ const RegisterModal = () => {
           type="text"
           ref={register({
             required: true,
+            pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
           })}
         />
-        {errors.email && <span>Please enter email</span>}
+        {errors.email?.type === 'required' && (
+          <span className="app-form-error">Email is required</span>
+        )}
+        {errors.email?.type === 'pattern' && (
+          <span className="app-form-error">Please enter a valid email</span>
+        )}
         <input
           className="app-form-input"
           placeholder="Password"
@@ -45,7 +60,9 @@ const RegisterModal = () => {
             required: true,
           })}
         />
-        {errors.password && <span>Please enter password</span>}
+        {errors.password?.type === 'required' && (
+          <span className="app-form-error">Please enter password</span>
+        )}
         <button className="btn-form"> Register</button>
       </form>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
 import Dashboard from '../dashboard/Dashboard';
 import EditExpense from '../expenses/EditExpense';
 import AddExpense from '../expenses/AddExpense';
@@ -10,10 +11,10 @@ const Routes = () => {
   return (
     <section className="container">
       <Switch>
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/edit/:id" component={EditExpense} />
-        <Route exact path="/add" component={AddExpense} />
-        <Route exact path="/:id" component={ExpenseDetails} />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/edit/:id" component={EditExpense} />
+        <PrivateRoute exact path="/add" component={AddExpense} />
+        <PrivateRoute exact path="/:id" component={ExpenseDetails} />
         <Route component={NotFound} />
       </Switch>
     </section>

@@ -15,7 +15,6 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const expenses = useSelector((state) => state.expenses.expenses);
   const isLoading = useSelector((state) => state.expenses.isLoading);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const totalByCategoryChartData = useSelector(
     (state) => state.charts.totalByCategoryChartData
   );
@@ -26,9 +25,6 @@ const Dashboard = () => {
     dispatch(getTotalByCategory());
   }, [dispatch]);
 
-  if(!isAuthenticated) {
-    return <Redirect to="/"/>
-  }
 
   return (
     <Fragment>

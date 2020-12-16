@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -14,16 +14,16 @@ const ExpenseItem = ({ expense }) => {
 
   return (
     <div className="expense-list-item">
-      <h3 className="expense-list-item-name">
+      <div className="expense-list-item-details">
         <NavLink className="link" to={`/${_id}`}>
           {name}
         </NavLink>
-      </h3>
-      <div className="expense-list-item-cost">
         <h3>
           <FontAwesomeIcon icon="dollar-sign" size="xs" />
           {cost}
         </h3>
+      </div>
+      <div className="expense-list-item-buttons">
         <NavLink to={`/edit/${expense._id}`} className="btn-edit">
           <FontAwesomeIcon icon="pen" className="icon-edit" />
         </NavLink>
@@ -36,6 +36,6 @@ const ExpenseItem = ({ expense }) => {
 };
 
 ExpenseItem.propTypes = {
-  expense: PropTypes.object.isRequired
-}
+  expense: PropTypes.object.isRequired,
+};
 export default ExpenseItem;

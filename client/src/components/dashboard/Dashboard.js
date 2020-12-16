@@ -5,10 +5,12 @@ import {
   getTotalByCategory,
   getTotalCost,
 } from '../../redux/actions/expenseActions';
+import { getTotalCostByMonth } from '../../redux/actions/chartActions';
 import Spinner from '../layout/Spinner';
 import TotalByCategoryChart from '../charts/TotalByCategoryChart';
 import ExpenseList from '../expenses/ExpenseList';
 import DashboardActions from './DashboardActions';
+import TotalCostByMonthChart from '../charts/TotalCostByMonthChart';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -17,13 +19,16 @@ const Dashboard = () => {
   const totalByCategoryChartData = useSelector(
     (state) => state.charts.totalByCategoryChartData
   );
+  const totalCostByMonthChartData = useSelector(
+    (state) => state.charts.totalCostByMonthChartData
+  );
 
   useEffect(() => {
     dispatch(getExpenses());
-    dispatch(getTotalCost())
+    dispatch(getTotalCost());
+    dispatch(getTotalCostByMonth());
     dispatch(getTotalByCategory());
   }, [dispatch]);
-
 
   return (
     <Fragment>
@@ -36,6 +41,9 @@ const Dashboard = () => {
             <ExpenseList expenses={expenses} />
             <TotalByCategoryChart
               totalByCategoryChartData={totalByCategoryChartData}
+            />
+            <TotalCostByMonthChart
+              totalCostByMonthChartData={totalCostByMonthChartData}
             />
           </div>
         </div>

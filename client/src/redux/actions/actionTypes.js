@@ -11,3 +11,4 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const LOAD_USER = 'LOAD_USER';
 export const LOGOUT = 'LOGOUT';
 export const GET_TOTAL_COST = 'GET_TOTAL_COST';
+export const GET_TOTAL_COST_BY_MONTH = 'GET_TOTAL_COST_BY_MONTH';

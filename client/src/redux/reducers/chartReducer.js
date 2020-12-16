@@ -1,7 +1,12 @@
-import { GET_TOTAL_BY_CATEGORY, REMOVE_EXPENSE } from '../actions/actionTypes';
+import {
+  GET_TOTAL_BY_CATEGORY,
+  GET_TOTAL_COST_BY_MONTH,
+  REMOVE_EXPENSE,
+} from '../actions/actionTypes';
 
 const initialState = {
   totalByCategoryChartData: {},
+  totalCostByMonthChartData: {},
   isLoading: true,
 };
 
@@ -9,6 +14,12 @@ export default (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case GET_TOTAL_COST_BY_MONTH:
+      return {
+        ...state,
+        totalCostByMonthChartData: payload.data,
+      };
+
     case GET_TOTAL_BY_CATEGORY:
       return {
         ...state,

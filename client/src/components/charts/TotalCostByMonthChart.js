@@ -1,20 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Doughnut } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
-export const TotalByCategoryChart = ({ totalByCategoryChartData }) => {
-  if (!totalByCategoryChartData) {
+const TotalCostByMonthChart = ({ totalCostByMonthChartData }) => {
+  if (!totalCostByMonthChartData) {
     return null;
   }
 
-  const chartLabels = Object.keys(totalByCategoryChartData);
-  const costByCategory = Object.values(totalByCategoryChartData);
+  const chartLabels = Object.keys(totalCostByMonthChartData);
+  const expensesByMonth = Object.values(totalCostByMonthChartData);
+  console.log(chartLabels);
 
   const data = {
     labels: chartLabels,
     datasets: [
       {
-        data: costByCategory,
+        data: expensesByMonth,
         backgroundColor: [
           '#003f5c',
           '#58508d',
@@ -31,25 +31,21 @@ export const TotalByCategoryChart = ({ totalByCategoryChartData }) => {
   };
   return (
     <div className="expense-chart add-box-shadow add-margin-y">
-      <Doughnut
+      <Bar
         data={data}
         options={{
           title: {
-            text: 'Total expenses by category',
+            text: 'Total expenses by month',
             display: true,
             fontSize: 20,
           },
           maintainAspectRatio: false,
           responsive: true,
         }}
-        legend={{ display: true, position: 'bottom', align: 'center' }}
+        legend={{ display: false }}
       />
     </div>
   );
 };
 
-TotalByCategoryChart.propTypes = {
-  totalByCategoryChartData: PropTypes.object.isRequired,
-};
-
-export default TotalByCategoryChart;
+export default TotalCostByMonthChart;

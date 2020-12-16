@@ -1,13 +1,15 @@
-const createCategoriesObject = (categoriesArray) => {
+const moment = require('moment');
+
+const convertArrayToObject = (categoriesArray) => {
   let categoryObject = {};
-  categoriesArray.forEach((category) => {
-    categoryObject[category._id] = category.total;
+  categoriesArray.forEach((element) => {
+    categoryObject[element._id] = element.total;
   });
 
   return categoryObject;
 };
 
-
 module.exports = {
-    createCategoriesObject
-}
+  convertArrayToObject,
+  
+};

@@ -3,12 +3,18 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginWithUserNameAndPassword } from '../../redux/actions/authActions';
+import { hideModal } from '../../redux/actions/modalActions';
 
 export const LoginModal = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  if (isAuthenticated) {
+    dispatch(hideModal());
+  }
 
   const submitData = (data) => {
     dispatch(loginWithUserNameAndPassword(data));

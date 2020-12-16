@@ -71,14 +71,16 @@ exports.deleteExpense = asyncHandler(async (req, res, next) => {
 // @route       GET /api/v1/expenses/totalbycategory
 // @access      Private
 exports.getTotalByCategory = asyncHandler(async (req, res, next) => {
-  const result = await Expense.aggregate([
+  const totalByCategory = await Expense.aggregate([
     { $match: { userId: req.user.id } },
     { $group: { _id: '$category', total: { $sum: '$cost' } } },
   ]);
 
-  const categoriesObject = helperFunctions.createCategoriesObject(result);
+  const totalByCategoryObject = helperFunctions.convertArrayToObject(
+    totalByCategory
+  );
 
-  res.status(200).json({ success: true, data: categoriesObject });
+  res.status(200).json({ success: true, data: totalByCategoryObject });
 });
 
 // @desc        Sum all expenses
@@ -91,4 +93,38 @@ exports.getTotalCost = asyncHandler(async (req, res, next) => {
   ]);
 
   res.status(200).json({ success: true, data: totalCost[0] });
+});
+
+exports.getTotalCostByMonth = asyncHandler(async (req, res, ext) => {
+  const totalCostByMonth = await Expense.aggregate([
+    {
+      $project: {
+        date: {
+          $dateToString: {
+            format: '%m-%Y',
+            date: '$createdAt',
+          },
+        },
+        cost: 1,
+        userId: 1,
+      },
+    },
+    {
+      $match: {
+        userId: req.user.id,
+      },
+    },
+    {
+      $group: {
+        _id: '$date',
+        total: { $sum: '$cost' },
+      },
+    },
+  ]);
+
+  const totalCostByMonthObject = helperFunctions.convertArrayToObject(
+    totalCostByMonth
+  );
+
+  res.status(200).json({ success: true, data: totalCostByMonthObject });
 });

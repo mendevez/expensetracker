@@ -9,6 +9,8 @@ import {
 } from './actionTypes';
 import api from '../../utils/api';
 import history from '../../history';
+import { hideModal } from './modalActions';
+import { getTotalCostByMonth } from './chartActions';
 
 export const getExpenses = () => async (dispatch) => {
   try {
@@ -72,6 +74,9 @@ export const removeExpense = (expense) => async (dispatch) => {
       type: REMOVE_EXPENSE,
       payload: expense,
     });
+    dispatch(getTotalCostByMonth())
+
+    dispatch(hideModal());
   } catch (error) {
     console.log(error);
   }
@@ -80,7 +85,7 @@ export const removeExpense = (expense) => async (dispatch) => {
 export const getTotalCost = () => async (dispatch) => {
   try {
     const response = await api.get('expenses/total');
-    
+
     dispatch({
       type: GET_TOTAL_COST,
       payload: response.data,

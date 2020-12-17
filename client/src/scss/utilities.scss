@@ -44,29 +44,30 @@
     background: $primary-color;
     color: $light-color;
     text-align: center;
-    border-radius: 5px;
     font-size: 0.8rem;
+    &:hover {
+      background: $tertiary-color;
+    }
   }
   &-delete {
     @extend %btn-shared;
-    border-radius: 5px;
-    background: 	$tertiary-color;
-    .icon-delete { 
-      color:$light-color;
+    border-radius: 25% 5% 25% 5%;
+    background: $tertiary-color;
+    .icon-delete {
+      color: $light-color;
     }
     &:hover {
-      background: #eb1010;;
+      background: #eb1010;
     }
-
   }
   &-edit {
-    padding: 0.4rem 0.8rem;
+    padding: 0.5rem 0.9rem;
     margin-right: 5px;
-    border-radius: 5px;
+    border-radius: 25% 5% 25% 5%;
     background: $tertiary-color;
 
     .icon-edit {
-      color:$light-color;
+      color: $light-color;
     }
     &:hover {
       background: $green-color;

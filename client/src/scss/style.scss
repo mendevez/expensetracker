@@ -153,45 +153,44 @@ input:focus {
 
   &-content {
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
     .expense-list {
       display: flex;
       flex: 3;
       flex-direction: column;
 
       &-title {
-        padding: 0.5rem 1rem;
+        background: #f5f5f5;
+        padding: 1.5rem 1rem;
       }
 
       &-item {
         display: flex;
         padding: 0.5rem 1rem;
-        justify-content: space-between;
+        flex-direction: column;
+        .hide-buttons {
+          display: none;
+        }
+        .show-buttons {
+          display: block;
+        }
 
         &:hover {
-          background: #e8edea;
+          background: #f5f5f5;
         }
-        &-details {
-          // display: flex;
-          width: 50%;
-          justify-content: start;
-        }
-        h3 {
-          padding: 0.3rem;
+        div {
+          display: flex;
+          justify-content: space-between;
         }
 
-        &-cost {
-          align-items: center;
-          display: flex;
-          .fa-icon {
-            padding: 0 1rem;
-          }
+        h3 {
+          padding-bottom: 0.3rem;
         }
       }
     }
 
     .expense-chart {
-      flex: 2;
+      flex: 3;
       height: 250px;
       padding: 0.5rem;
     }

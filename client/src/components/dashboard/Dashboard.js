@@ -1,10 +1,7 @@
 import React, { useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getExpenses,
-  getTotalByCategory,
-  getTotalCost,
-} from '../../redux/actions/expenseActions';
+import { getExpenses, getTotalCost } from '../../redux/actions/expenseActions';
+import { getTotalByCategory } from '../../redux/actions/chartActions';
 import { getTotalCostByMonth } from '../../redux/actions/chartActions';
 import Spinner from '../layout/Spinner';
 import TotalByCategoryChart from '../charts/TotalByCategoryChart';
@@ -39,6 +36,7 @@ const Dashboard = () => {
           <DashboardActions />
           <div className="dashboard-content">
             <ExpenseList expenses={expenses} />
+
             <TotalByCategoryChart
               totalByCategoryChartData={totalByCategoryChartData}
             />

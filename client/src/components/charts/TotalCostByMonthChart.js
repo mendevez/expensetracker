@@ -8,7 +8,6 @@ const TotalCostByMonthChart = ({ totalCostByMonthChartData }) => {
 
   const chartLabels = Object.keys(totalCostByMonthChartData);
   const expensesByMonth = Object.values(totalCostByMonthChartData);
-  console.log(chartLabels);
 
   const data = {
     labels: chartLabels,
@@ -32,6 +31,8 @@ const TotalCostByMonthChart = ({ totalCostByMonthChartData }) => {
   return (
     <div className="expense-chart add-box-shadow add-margin-y">
       <Bar
+        height={300}
+
         data={data}
         options={{
           title: {

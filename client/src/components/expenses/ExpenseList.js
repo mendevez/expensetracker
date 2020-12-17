@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const ExpenseList = ({ expenses }) => {
   return (
     <div className="expense-list add-margin-y add-box-shadow">
-      <h1 className = "expense-list-title">Expenses</h1>
+      <h1 className="expense-list-title">Expenses</h1>
       {expenses &&
         expenses.map((expense) => {
           return <ExpenseItem key={expense._id} expense={expense} />;

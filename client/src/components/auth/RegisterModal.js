@@ -2,21 +2,16 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from 'react-hook-form';
 import { registerNewUser } from '../../redux/actions/authActions';
-import { hideModal } from '../../redux/actions/modalActions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const RegisterModal = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const submitData = (data) => {
     dispatch(registerNewUser(data));
   };
 
-  if (isAuthenticated) {
-    dispatch(hideModal());
-  }
   return (
     <div className="modal-register add-border-radius">
       <form className="modal-form" onSubmit={handleSubmit(submitData)}>
@@ -48,7 +43,7 @@ const RegisterModal = () => {
           type="text"
           ref={register({
             required: true,
-            pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+            pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
           })}
         />
         {errors.email?.type === 'required' && (

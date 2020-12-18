@@ -174,7 +174,16 @@ input:focus {
         .show-buttons {
           display: block;
         }
-
+        .expense-name {
+        
+          word-break: break-all;
+        }
+        &-description {
+          p {
+            word-break: break-all;
+            max-width: 70%;
+          }
+        }
         &:hover {
           background: #f5f5f5;
         }

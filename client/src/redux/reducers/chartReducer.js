@@ -1,6 +1,7 @@
 import {
   GET_TOTAL_BY_CATEGORY,
   GET_TOTAL_COST_BY_MONTH,
+  LOGOUT,
   REMOVE_EXPENSE,
 } from '../actions/actionTypes';
 
@@ -34,6 +35,13 @@ export default (state = initialState, action) => {
           ...state.totalByCategoryChartData,
           [category]: state.totalByCategoryChartData[category] - cost,
         },
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        totalByCategoryChartData: {},
+        totalCostByMonthChartData: {},
+        isLoading: true,
       };
 
     default:

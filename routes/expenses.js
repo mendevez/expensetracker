@@ -8,6 +8,7 @@ const {
   getTotalByCategory,
   getTotalCost,
   getTotalCostByMonth,
+  totalCostForCurrentWeek,
 } = require('../controllers/expenses');
 const { authGuard } = require('../middleware/auth');
 
@@ -17,6 +18,7 @@ const router = express.Router();
 router.route('/').get(authGuard, getExpenses).post(authGuard, addExpense);
 router.route('/totalbycategory').get(authGuard, getTotalByCategory);
 router.route('/totalbymonth').get(authGuard, getTotalCostByMonth);
+router.route('/totalcurrentweek').get(authGuard, totalCostForCurrentWeek);
 router.route('/total').get(authGuard, getTotalCost);
 router
   .route('/:id')

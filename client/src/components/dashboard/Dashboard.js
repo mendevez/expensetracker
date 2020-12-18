@@ -1,6 +1,10 @@
 import React, { useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getExpenses, getTotalCost } from '../../redux/actions/expenseActions';
+import {
+  getExpenses,
+  getTotalCost,
+  getTotalCostCurrentWeek,
+} from '../../redux/actions/expenseActions';
 import { getTotalByCategory } from '../../redux/actions/chartActions';
 import { getTotalCostByMonth } from '../../redux/actions/chartActions';
 import Spinner from '../layout/Spinner';
@@ -20,7 +24,9 @@ const Dashboard = () => {
     (state) => state.charts.totalCostByMonthChartData
   );
 
+
   useEffect(() => {
+    dispatch(getTotalCostCurrentWeek());
     dispatch(getExpenses());
     dispatch(getTotalCost());
     dispatch(getTotalCostByMonth());

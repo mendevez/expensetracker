@@ -2,7 +2,7 @@ const asyncHandler = require('../middleware/async');
 const Expense = require('../models/Expense');
 const ErrorResponse = require('../utils/errorResponse');
 const helperFunctions = require('../utils/helperFunctions');
-
+const moment = require('moment');
 // @desc        Get all expenses
 // @route       GET /api/v1/expenses
 // @access      Private
@@ -87,15 +87,22 @@ exports.getTotalByCategory = asyncHandler(async (req, res, next) => {
 // @route       GET /api/v1/expenses/total
 // @access      Private
 exports.getTotalCost = asyncHandler(async (req, res, next) => {
+  let result = { total: 0 };
   const totalCost = await Expense.aggregate([
     { $match: { userId: req.user.id } },
-    { $group: { _id: null, totalCost: { $sum: '$cost' } } },
+    { $group: { _id: null, total: { $sum: '$cost' } } },
   ]);
 
-  res.status(200).json({ success: true, data: totalCost[0] });
+  // Check if the total cost has no values and set it to the response if it does
+  totalCost.length >= 1 ? (result = totalCost[0]) : result;
+
+  res.status(200).json({ success: true, data: result });
 });
 
-exports.getTotalCostByMonth = asyncHandler(async (req, res, ext) => {
+// @desc        Sum all expenses by month
+// @route       GET /api/v1/expenses/totalbymonth
+// @access      Private
+exports.getTotalCostByMonth = asyncHandler(async (req, res, next) => {
   const totalCostByMonth = await Expense.aggregate([
     {
       $project: {
@@ -127,4 +134,43 @@ exports.getTotalCostByMonth = asyncHandler(async (req, res, ext) => {
   );
 
   res.status(200).json({ success: true, data: totalCostByMonthObject });
+});
+
+// @desc        Sum all expenses for current week
+// @route       GET /api/v1/expenses/totalcurrentweek
+// @access      Private
+exports.totalCostForCurrentWeek = asyncHandler(async (req, res, next) => {
+  const startOfWeek = moment().startOf('isoWeek').toString();
+  const endOfWeek = moment().endOf('isoWeek').toString();
+  let result = { total: 0 };
+
+  const totalCostCurrentWeek = await Expense.aggregate([
+    {
+      $match: {
+        $and: [
+          {
+            createdAt: {
+              $gte: new Date(startOfWeek),
+              $lt: new Date(endOfWeek),
+            },
+          },
+          {
+            userId: req.user.id,
+          },
+        ],
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        total: { $sum: '$cost' },
+      },
+    },
+  ]);
+  // Check if the total cost has no values and set it to the response if it does
+  totalCostCurrentWeek.length >= 1
+    ? (result = totalCostCurrentWeek[0])
+    : result;
+
+  return res.status(200).json({ success: true, data: result });
 });

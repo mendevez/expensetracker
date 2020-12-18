@@ -5,6 +5,7 @@ import {
   GET_EXPENSE,
   EDIT_EXPENSE,
   GET_TOTAL_COST,
+  GET_TOTAL_COST_CURRENT_WEEK,
 } from './actionTypes';
 import api from '../../utils/api';
 import history from '../../history';
@@ -73,9 +74,9 @@ export const removeExpense = (expense) => async (dispatch) => {
       type: REMOVE_EXPENSE,
       payload: expense,
     });
-    dispatch(getTotalCostByMonth())
-
+    dispatch(getTotalCostByMonth());
     dispatch(hideModal());
+    dispatch(getTotalCostCurrentWeek());
   } catch (error) {
     console.log(error);
   }
@@ -87,6 +88,17 @@ export const getTotalCost = () => async (dispatch) => {
 
     dispatch({
       type: GET_TOTAL_COST,
+      payload: response.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getTotalCostCurrentWeek = () => async (dispatch) => {
+  try {
+    const response = await api.get('expenses/totalcurrentweek');
+    dispatch({
+      type: GET_TOTAL_COST_CURRENT_WEEK,
       payload: response.data,
     });
   } catch (error) {

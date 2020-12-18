@@ -4,15 +4,15 @@ import {
   REMOVE_EXPENSE,
   GET_EXPENSE,
   EDIT_EXPENSE,
-  GET_TOTAL_BY_CATEGORY,
   GET_TOTAL_COST,
+  GET_TOTAL_COST_CURRENT_WEEK,
   LOGOUT,
 } from '../actions/actionTypes';
 
 const initialState = {
   expenses: [],
   isLoading: true,
-  totalByCategoryChartData: {},
+  totalCostCurrentWeek: 0,
   totalCost: null,
 };
 
@@ -48,36 +48,28 @@ export default (state = initialState, action) => {
         isLoading: false,
       };
     case REMOVE_EXPENSE:
-      const { _id, category, cost } = payload;
+      const { _id,cost } = payload;
       return {
         ...state,
         expenses: state.expenses.filter((expense) => expense._id !== _id),
-        totalByCategoryChartData: {
-          ...state.totalByCategoryChartData,
-          [category]: state.totalByCategoryChartData[category] - cost,
-        },
         totalCost: state.totalCost - cost,
         isLoading: false,
       };
     case GET_TOTAL_COST:
       return {
         ...state,
-        totalCost: payload.data.totalCost,
+        totalCost: payload.data.total,
       };
-
-    case GET_TOTAL_BY_CATEGORY:
+    case GET_TOTAL_COST_CURRENT_WEEK:
       return {
         ...state,
-        totalByCategoryChartData: payload.data,
-        isLoading: false,
+        totalCostCurrentWeek: payload.data.total
       };
-
     case LOGOUT:
       return {
         ...state,
         expenses: [],
         isLoading: true,
-        totalByCategoryChartData: {},
         totalCost: null,
       };
 

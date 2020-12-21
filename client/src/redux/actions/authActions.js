@@ -1,6 +1,7 @@
 import api from '../../utils/api';
 import { REGISTER_USER, LOGIN_USER, LOAD_USER, LOGOUT } from './actionTypes';
 import { hideModal } from './modalActions';
+import { setAlert } from './alertActions';
 import setAuthenticationToken from '../../utils/setAuthToken';
 
 export const loadUser = () => async (dispatch) => {
@@ -15,7 +16,7 @@ export const loadUser = () => async (dispatch) => {
       payload: response.data,
     });
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data.error);
   }
 };
 
@@ -28,8 +29,9 @@ export const loginWithUserNameAndPassword = (formData) => async (dispatch) => {
     });
     dispatch(hideModal());
     dispatch(loadUser());
+    dispatch(setAlert('Login successful', 'success'));
   } catch (error) {
-    console.log(error);
+    dispatch(setAlert(error.response.data.error, 'fail'));
   }
 };
 
@@ -42,8 +44,9 @@ export const registerNewUser = (formData) => async (dispatch) => {
     });
     dispatch(hideModal());
     dispatch(loadUser());
+    dispatch(setAlert('Registered successfully', 'success'));
   } catch (error) {
-    console.log(error);
+    dispatch(setAlert(error.response.data.error, 'fail'));
   }
 };
 

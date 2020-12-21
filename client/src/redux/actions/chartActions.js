@@ -1,13 +1,18 @@
 import api from '../../utils/api';
 import { GET_TOTAL_COST_BY_MONTH, GET_TOTAL_BY_CATEGORY } from './actionTypes';
+import { setAlert } from './alertActions';
 
 export const getTotalCostByMonth = () => async (dispatch) => {
-  const response = await api.get('/expenses/totalbymonth');
+  try {
+    const response = await api.get('/expenses/totalbymonth');
 
-  dispatch({
-    type: GET_TOTAL_COST_BY_MONTH,
-    payload: response.data,
-  });
+    dispatch({
+      type: GET_TOTAL_COST_BY_MONTH,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch(setAlert(error.response.data.error, 'fail'));
+  }
 };
 
 export const getTotalByCategory = () => async (dispatch) => {
@@ -19,6 +24,6 @@ export const getTotalByCategory = () => async (dispatch) => {
       payload: response.data,
     });
   } catch (error) {
-    console.log(error);
+    dispatch(setAlert(error.response.data.error, 'fail'));
   }
 };

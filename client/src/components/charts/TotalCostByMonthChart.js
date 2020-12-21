@@ -29,7 +29,7 @@ const TotalCostByMonthChart = ({ totalCostByMonthChartData }) => {
     ],
   };
   return (
-    <div className="expense-chart add-box-shadow add-margin-y">
+    <div className="add-box-shadow">
       <Bar
         height={300}
 

@@ -24,7 +24,6 @@ const Dashboard = () => {
     (state) => state.charts.totalCostByMonthChartData
   );
 
-
   useEffect(() => {
     dispatch(getTotalCostCurrentWeek());
     dispatch(getExpenses());
@@ -43,12 +42,14 @@ const Dashboard = () => {
           <div className="dashboard-content">
             <ExpenseList expenses={expenses} />
 
-            <TotalByCategoryChart
-              totalByCategoryChartData={totalByCategoryChartData}
-            />
-            <TotalCostByMonthChart
-              totalCostByMonthChartData={totalCostByMonthChartData}
-            />
+            <div className="dashboard-charts add-margin-y">
+              <TotalByCategoryChart
+                totalByCategoryChartData={totalByCategoryChartData}
+              />
+              <TotalCostByMonthChart
+                totalCostByMonthChartData={totalCostByMonthChartData}
+              />
+            </div>
           </div>
         </div>
       )}

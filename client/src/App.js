@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Routes from './components/routing/Routes';
 import ModalManager from './components/modals/ModalManager';
+import Alert from './components/alerts/Alert';
 import setAuthenticationToken from './utils/setAuthToken';
 import history from './history';
 import './scss/style.scss';
@@ -23,6 +24,7 @@ const App = () => {
       <Router history={history}>
         <Fragment>
           <Navbar />
+          <Alert />
           <ModalManager />
           <Switch>
             <Route exact path="/" component={Landing} />

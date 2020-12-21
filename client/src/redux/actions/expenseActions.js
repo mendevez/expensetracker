@@ -11,6 +11,7 @@ import api from '../../utils/api';
 import history from '../../history';
 import { hideModal } from './modalActions';
 import { getTotalCostByMonth } from './chartActions';
+import { setAlert } from './alertActions';
 
 export const getExpenses = () => async (dispatch) => {
   try {
@@ -21,7 +22,7 @@ export const getExpenses = () => async (dispatch) => {
       payload: response.data,
     });
   } catch (error) {
-    console.log(error);
+    dispatch(setAlert(error.response.data.error, 'fail'));
   }
 };
 
@@ -34,7 +35,7 @@ export const getExpense = (id) => async (dispatch) => {
       payload: response.data,
     });
   } catch (error) {
-    console.log(error);
+    dispatch(setAlert(error.response.data.error, 'fail'));
   }
 };
 
@@ -46,8 +47,9 @@ export const addExpense = (formData) => async (dispatch) => {
       payload: response.data,
     });
     history.push('/dashboard');
+    dispatch(setAlert('New expense added successfully', 'success'));
   } catch (error) {
-    console.log(error);
+    dispatch(setAlert(error.response.data.error, 'fail'));
   }
 };
 
@@ -60,8 +62,9 @@ export const editExpense = (id, formValues) => async (dispatch) => {
       payload: response.data,
     });
     history.push('/dashboard');
+    dispatch(setAlert('Expense updated successfully', 'success'));
   } catch (error) {
-    console.log(error);
+    dispatch(setAlert(error.response.data.error, 'fail'));
   }
 };
 
@@ -77,8 +80,9 @@ export const removeExpense = (expense) => async (dispatch) => {
     dispatch(getTotalCostByMonth());
     dispatch(hideModal());
     dispatch(getTotalCostCurrentWeek());
+    dispatch(setAlert('Expense removed successfully', 'success'));
   } catch (error) {
-    console.log(error);
+    dispatch(setAlert(error.response.data.error, 'fail'));
   }
 };
 
@@ -91,7 +95,7 @@ export const getTotalCost = () => async (dispatch) => {
       payload: response.data,
     });
   } catch (error) {
-    console.log(error);
+    dispatch(setAlert(error.response.data.error, 'fail'));
   }
 };
 export const getTotalCostCurrentWeek = () => async (dispatch) => {
@@ -102,6 +106,6 @@ export const getTotalCostCurrentWeek = () => async (dispatch) => {
       payload: response.data,
     });
   } catch (error) {
-    console.log(error);
+    dispatch(setAlert(error.response.data.error, 'fail'));
   }
 };

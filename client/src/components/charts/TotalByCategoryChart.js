@@ -30,7 +30,7 @@ export const TotalByCategoryChart = ({ totalByCategoryChartData }) => {
     ],
   };
   return (
-    <div className="expense-chart add-box-shadow add-margin-y">
+    <div className=" category-chart add-box-shadow">
       <Doughnut
         data={data}
         options={{
@@ -39,7 +39,6 @@ export const TotalByCategoryChart = ({ totalByCategoryChartData }) => {
             display: true,
             fontSize: 20,
           },
-          maintainAspectRatio: false,
           responsive: true,
         }}
         legend={{ display: true, position: 'bottom', align: 'center' }}

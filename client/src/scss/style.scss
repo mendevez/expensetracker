@@ -17,6 +17,10 @@ input:focus {
   outline: none;
 }
 
+.content {
+  flex: 1 0 auto;
+}
+
 // Navigation links
 .navlink {
   text-decoration: none;
@@ -60,6 +64,26 @@ input:focus {
   }
 }
 
+// Alerts
+%alert-shared {
+  text-align: center;
+  padding: 0.8rem;
+  position: absolute;
+  width: 100%;
+  z-index: 1300;
+}
+
+.alert-fail {
+  @extend %alert-shared;
+  background: $red-color;
+  color: $light-color;
+}
+.alert-success {
+  @extend %alert-shared;
+  background: $green-color;
+  color: $light-color;
+}
+
 // landing
 .landing {
   height: 100vh;
@@ -95,7 +119,6 @@ input:focus {
   margin: 1rem auto;
   display: flex;
   flex-direction: column;
-  z-index: 1200;
   padding: 2rem;
 }
 
@@ -140,6 +163,8 @@ input:focus {
 }
 
 .dashboard {
+  margin-top: 2rem;
+  
   &-actions {
     padding: 2.5rem;
   }
@@ -153,10 +178,9 @@ input:focus {
 
   &-content {
     display: flex;
-    // justify-content: space-around;
     .expense-list {
       display: flex;
-      flex: 3;
+      flex: 1;
       flex-direction: column;
 
       &-title {
@@ -175,7 +199,6 @@ input:focus {
           display: block;
         }
         .expense-name {
-        
           word-break: break-all;
         }
         &-description {
@@ -197,11 +220,13 @@ input:focus {
         }
       }
     }
-
-    .expense-chart {
-      flex: 3;
-      height: 250px;
-      padding: 0.5rem;
+  }
+  .dashboard-charts {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    .category-chart {
+      margin-bottom: 1rem;
     }
   }
 }

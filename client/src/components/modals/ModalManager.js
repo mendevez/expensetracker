@@ -5,11 +5,15 @@ import DeleteModal from '../expenses/DeleteModal';
 import RegisterModal from '../auth/RegisterModal';
 import { DELETE_MODAL, LOGIN_MODAL, REGISTER_MODAL } from './modalTypes';
 import { hideModal } from '../../redux/actions/modalActions';
+import {
+  selectModalType,
+  selectShowModal,
+} from '../../redux/selectors/modalSelectors';
 import LoginModal from '../auth/LoginModal';
 
 const ModalManager = () => {
-  const openModal = useSelector((state) => state.modal.showModal);
-  const modalType = useSelector((state) => state.modal.modalType);
+  const openModal = useSelector((state) => selectShowModal(state));
+  const modalType = useSelector((state) => selectModalType(state));
   const dispatch = useDispatch();
 
   const handleClick = () => {

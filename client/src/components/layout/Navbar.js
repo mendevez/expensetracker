@@ -4,11 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { REGISTER_MODAL, LOGIN_MODAL } from '../modals/modalTypes';
 import { showModal } from '../../redux/actions/modalActions';
 import { logout } from '../../redux/actions/authActions';
+import {
+  selectIsAuthenticated,
+  selectIsLoading,
+} from '../../redux/selectors/authSelectors';
 
 export const Navbar = () => {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const isLoading = useSelector((state) => state.auth.isLoading);
+  const isAuthenticated = useSelector((state) => selectIsAuthenticated(state));
+  const isLoading = useSelector((state) => selectIsLoading(state));
 
   const openRegisterModal = () => {
     dispatch(showModal(null, REGISTER_MODAL));
@@ -53,7 +57,7 @@ export const Navbar = () => {
         </NavLink>
       </h1>
 
-      {!isLoading &&(isAuthenticated ? AuthenticatedLinks : GuestLinks)}
+      {!isLoading && (isAuthenticated ? AuthenticatedLinks : GuestLinks)}
     </nav>
   );
 };

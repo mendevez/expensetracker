@@ -6,6 +6,7 @@ import {
   EDIT_EXPENSE,
   GET_TOTAL_COST,
   GET_TOTAL_COST_CURRENT_WEEK,
+  SET_SEARCH_KEYWORD,
 } from './actionTypes';
 import api from '../../utils/api';
 import history from '../../history';
@@ -107,5 +108,16 @@ export const getTotalCostCurrentWeek = () => async (dispatch) => {
     });
   } catch (error) {
     dispatch(setAlert(error.response.data.error, 'fail'));
+  }
+};
+
+export const setSearchKeyword = (keyword) => (dispatch) => {
+  try {
+    dispatch({
+      type: SET_SEARCH_KEYWORD,
+      payload: keyword,
+    });
+  } catch (error) {
+    dispatch(setAlert('Search unsuccessful', 'fail'));
   }
 };

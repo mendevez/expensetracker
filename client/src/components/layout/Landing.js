@@ -1,24 +1,24 @@
 import React from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { selectIsAuthenticated } from '../../redux/selectors/authSelectors';
 export const Landing = () => {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => selectIsAuthenticated(state));
 
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }
   return (
-    <div className="landing">
-      <div className="overlay"></div>
-
-      <div className="landing-content">
-        <h1 className="landing-content-text">Track and manage your expenses</h1>
-
-        <NavLink className="btn-main" to="/dashboard">
-          Get started
-        </NavLink>
-      </div>
+    <div className="home">
+      <section className="landing">
+        <div className="overlay"></div>
+        <div className="landing-content">
+          <h1 className="landing-content-text">
+            Track and manage your expenses
+          </h1>
+        </div>
+      </section>
+      <div className="container"></div>
     </div>
   );
 };

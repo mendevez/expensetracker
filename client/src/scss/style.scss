@@ -17,10 +17,6 @@ input:focus {
   outline: none;
 }
 
-.content {
-  flex: 1 0 auto;
-}
-
 // Navigation links
 .navlink {
   text-decoration: none;
@@ -45,16 +41,15 @@ input:focus {
 // Navbar
 .navbar {
   background: $primary-color;
-  color: $secondary-color;
   padding: 1.5rem 0;
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
   border-bottom: 3px $tertiary-color solid;
   .logo {
+    color: $secondary-color;
     padding: 0 1rem;
     text-decoration: underline;
-    color: $secondary-color;
   }
   ul {
     display: flex;
@@ -89,17 +84,52 @@ input:focus {
   height: 100vh;
   background: url('../img/landing3.jpg') no-repeat center center/cover;
   position: relative;
+  display: flex;
+  justify-content: center;
   &-content {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+    padding: 2rem;
     &-text {
+      font-size: 2rem;
       padding: 2rem 1rem;
       color: $secondary-color;
     }
+  }
+}
+.home {
+  background: $tertiary-color;
+}
+.about {
+  padding: 1rem;
+  color: $light-color;
+}
+.services {
+  padding: 1rem;
+  &-title {
+    color: $light-color;
+  }
+  &-list {
+    display: flex;
+    padding: 0.8rem;
+    &-card {
+      background: $primary-color;
+      flex: 1;
+      margin: 0.5rem;
+      text-align: center;
+      color: $light-color;
+      h3 {
+        padding: 1rem 0.5rem;
+      }
+      p {
+        padding: 1rem 0.5rem;
+      }
+    }
+  }
+  &-icon {
+    color: $secondary-color;
+    font-size: 4rem;
   }
 }
 
@@ -164,7 +194,7 @@ input:focus {
 
 .dashboard {
   margin-top: 2rem;
-  
+
   &-actions {
     padding: 2.5rem;
   }
@@ -178,9 +208,13 @@ input:focus {
 
   &-content {
     display: flex;
+    .expense-list-wrapper {
+      flex: 1;
+      overflow: auto;
+      max-height: 70vh;
+    }
     .expense-list {
       display: flex;
-      flex: 1;
       flex-direction: column;
 
       &-title {
@@ -236,6 +270,17 @@ input:focus {
 
   h1 {
     padding: 1rem;
+  }
+}
+
+.search-bar {
+  padding: 1rem;
+  display: flex;
+
+  &-input {
+    width: 90%;
+    padding: 0.8rem;
+    border: solid 1px $primary-color;
   }
 }
 

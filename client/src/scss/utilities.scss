@@ -18,16 +18,6 @@
 
 .btn {
   text-decoration: none;
-  &-main {
-    @extend %btn-shared;
-    background: $primary-color;
-    color: $light-color;
-    text-decoration: none;
-    &:hover {
-      background: $secondary-color;
-      color: $primary-color;
-    }
-  }
   &-form {
     @extend %btn-shared;
     background: $tertiary-color;
@@ -35,9 +25,6 @@
     font-size: 1rem;
     padding: 0.5rem 1.5rem;
     width: 30%;
-    &:hover {
-      background: $primary-color;
-    }
   }
   &-dashboard {
     @extend %btn-shared;
@@ -45,9 +32,13 @@
     color: $light-color;
     text-align: center;
     font-size: 0.8rem;
-    &:hover {
-      background: $tertiary-color;
-    }
+  }
+  &-search {
+    @extend %btn-shared;
+    background: $primary-color;
+    color: $light-color;
+    padding: .5rem 1.5rem;
+    margin-left: .5rem;
   }
   &-delete {
     @extend %btn-shared;

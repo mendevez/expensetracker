@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getExpense, editExpense } from '../../redux/actions/expenseActions';
 import Spinner from '../layout/Spinner';
 import ExpenseForm from './ExpenseForm';
+import { selectExpense } from '../../redux/selectors/expenseSelectors';
 const EditExpense = ({ match }) => {
   const id = match.params.id;
   const dispatch = useDispatch();
-  const expense = useSelector((state) => state.expenses[id]);
+  const expense = useSelector((state) => selectExpense(state, id));
   const title = 'Edit expense';
 
   useEffect(() => {

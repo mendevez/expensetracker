@@ -7,7 +7,19 @@ const moment = require('moment');
 // @route       GET /api/v1/expenses
 // @access      Private
 exports.getExpenses = asyncHandler(async (req, res, next) => {
-  const expenses = await Expense.find({ userId: req.user.id });
+
+  const searchResult = req.query.keyword
+    ? {
+        userId: req.user.id,
+        name: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+      }
+    : {
+        userId: req.user.id,
+      };
+  const expenses = await Expense.find({...searchResult});
   res
     .status(200)
     .json({ success: true, count: expenses.length, data: expenses });

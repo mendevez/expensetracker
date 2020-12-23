@@ -14,9 +14,9 @@ import { hideModal } from './modalActions';
 import { getTotalCostByMonth } from './chartActions';
 import { setAlert } from './alertActions';
 
-export const getExpenses = () => async (dispatch) => {
+export const getExpenses = (keyword) => async (dispatch) => {
   try {
-    const response = await api.get('/expenses');
+    const response = await api.get(`/expenses?keyword=${keyword.trim()}`);
 
     dispatch({
       type: GET_EXPENSES,
@@ -111,13 +111,3 @@ export const getTotalCostCurrentWeek = () => async (dispatch) => {
   }
 };
 
-export const setSearchKeyword = (keyword) => (dispatch) => {
-  try {
-    dispatch({
-      type: SET_SEARCH_KEYWORD,
-      payload: keyword,
-    });
-  } catch (error) {
-    dispatch(setAlert('Search unsuccessful', 'fail'));
-  }
-};

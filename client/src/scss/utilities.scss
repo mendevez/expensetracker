@@ -37,8 +37,8 @@
     @extend %btn-shared;
     background: $primary-color;
     color: $light-color;
-    padding: .5rem 1.5rem;
-    margin-left: .5rem;
+    padding: 0.8rem 1.5rem;
+    margin-left: 0.5rem;
   }
   &-delete {
     @extend %btn-shared;

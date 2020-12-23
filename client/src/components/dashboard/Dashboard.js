@@ -14,15 +14,15 @@ import DashboardActions from './DashboardActions';
 import TotalCostByMonthChart from '../charts/TotalCostByMonthChart';
 import SearchBar from './SearchBar';
 import {
-  selectExpensesByName,
+  selectExpenses,
   selectLoading,
   selectTotalByCategoryChartData,
-  selectTotalByMonthChartData
+  selectTotalByMonthChartData,
 } from '../../redux/selectors/expenseSelectors';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const expenses = useSelector((state) => selectExpensesByName(state));
+  const expenses = useSelector((state) => selectExpenses(state));
   const isLoading = useSelector((state) => selectLoading(state));
   const totalByCategoryChartData = useSelector((state) =>
     selectTotalByCategoryChartData(state)
@@ -33,7 +33,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getTotalCostCurrentWeek());
-    dispatch(getExpenses());
+    dispatch(getExpenses(''));
     dispatch(getTotalCost());
     dispatch(getTotalCostByMonth());
     dispatch(getTotalByCategory());

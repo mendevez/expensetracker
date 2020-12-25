@@ -48,7 +48,7 @@
       color: $light-color;
     }
     &:hover {
-      background: #eb1010;
+      background: $red-color;
     }
   }
   &-edit {
@@ -63,6 +63,12 @@
     &:hover {
       background: $green-color;
     }
+  }
+
+  &-actions {
+    color: $primary-color;
+    margin-left: .5rem;
+    cursor: pointer;
   }
   &-modal {
     @extend %btn-shared;

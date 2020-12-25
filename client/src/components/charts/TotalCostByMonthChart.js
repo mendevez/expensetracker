@@ -1,9 +1,12 @@
 import React from 'react';
+import { selectTotalByMonthChartData } from '../../redux/selectors/expenseSelectors';
+import {useSelector} from 'react-redux';
 import { Bar } from 'react-chartjs-2';
 
-const TotalCostByMonthChart = React.memo(({ totalCostByMonthChartData }) => {
+const TotalCostByMonthChart = () => {
+  const totalCostByMonthChartData = useSelector(selectTotalByMonthChartData);
   if (!totalCostByMonthChartData) {
-    return null;
+    return <div>No data for total cost by month </div>
   }
   const chartLabels = Object.keys(totalCostByMonthChartData);
   const expensesByMonth = Object.values(totalCostByMonthChartData);
@@ -45,6 +48,6 @@ const TotalCostByMonthChart = React.memo(({ totalCostByMonthChartData }) => {
       />
     </div>
   );
-});
+};
 
 export default TotalCostByMonthChart;

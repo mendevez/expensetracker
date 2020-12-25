@@ -33,6 +33,10 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  monthlyBudget: {
+    type: Number,
+    default: 0,
+  },
 });
 
 // Encrypt password using bcrypt

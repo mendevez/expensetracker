@@ -9,6 +9,7 @@ export const HIDE_MODAL = 'HIDE_MODAL';
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOAD_USER = 'LOAD_USER';
+export const UPDATE_MONTHLY_BUDGET = 'UPDATE_MONTHLY_BUDGET';
 export const LOGOUT = 'LOGOUT';
 export const GET_TOTAL_COST = 'GET_TOTAL_COST';
 export const GET_TOTAL_COST_BY_MONTH = 'GET_TOTAL_COST_BY_MONTH';

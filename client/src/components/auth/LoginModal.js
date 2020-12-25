@@ -21,7 +21,7 @@ export const LoginModal = () => {
         </h1>
 
         <input
-          className="app-form-input "
+          className="app-form-input"
           name="email"
           placeholder="Email"
           type="text"

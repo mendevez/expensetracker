@@ -182,7 +182,7 @@ exports.getTotalCostForCurrentWeek = asyncHandler(async (req, res, next) => {
 exports.getTotalCostForCurrentMonth = asyncHandler(async (req, res, next) => {
   const startOfMonth = moment().startOf('month');
   const endofMonth = moment().endOf('month');
-
+  let result = { total: 0 };
   const totalCostCurrentMonth = await Expense.aggregate([
     {
       $match: {

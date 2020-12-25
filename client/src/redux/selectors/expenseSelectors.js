@@ -18,7 +18,7 @@ export const selectExpensesByName = createSelector(
   selectExpenses,
   selectKeyword,
   (expenses, keyword) => {
-    if (keyword.length === 0) {
+    if (!keyword.trim()) {
       return expenses;
     }
     return expenses.filter((element) =>

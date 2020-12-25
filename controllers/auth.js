@@ -10,6 +10,25 @@ exports.getUser = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: user });
 });
 
+// @desc        Update authenticated user
+// @route       GET /api/v1/auth/:id
+// @access      Private
+exports.updateUser = asyncHandler(async (req,res,next) => {
+
+  const user = await User.findByIdAndUpdate(req.user.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!user) {
+    return next(
+      new ErrorResponse(`Expense with id: ${req.user.id} not found`, 404)
+    );
+  }
+  res.status(200).json({ success: true, data: user });
+  
+})
+
 // @desc        Register new user
 // @route       POST /api/v1/auth/register
 // @access      Private

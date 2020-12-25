@@ -1,11 +1,12 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectIsAuthenticated } from '../../redux/selectors/authSelectors';
+import { selectIsAuthenticated, selectUser } from '../../redux/selectors/authSelectors';
 export const Landing = () => {
-  const isAuthenticated = useSelector((state) => selectIsAuthenticated(state));
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const user = useSelector(selectUser);
 
-  if (isAuthenticated) {
+  if (isAuthenticated && user) {
     return <Redirect to="/dashboard" />;
   }
   return (

@@ -19,7 +19,7 @@ const RegisterModal = () => {
           <FontAwesomeIcon icon="user" /> Register
         </h1>
         <input
-          className="app-form-input "
+          className="app-form-input"
           name="name"
           placeholder="Name"
           type="text"

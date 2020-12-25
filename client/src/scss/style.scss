@@ -197,6 +197,13 @@ input:focus {
 
   &-actions {
     padding: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-text {
+      color: $primary-color;
+      font-weight: bolder;
+    }
   }
   &-total-cost {
     font-size: 0.8rem;
@@ -208,10 +215,10 @@ input:focus {
 
   &-content {
     display: flex;
+    max-height: 650px;
     .expense-list-wrapper {
       flex: 1;
       overflow: auto;
-      max-height: 70vh;
     }
     .expense-list {
       display: flex;
@@ -256,6 +263,7 @@ input:focus {
     }
   }
   .dashboard-charts {
+    margin-left: 1rem;
     display: flex;
     flex: 1;
     flex-direction: column;

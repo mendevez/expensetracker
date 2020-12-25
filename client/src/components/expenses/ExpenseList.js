@@ -1,9 +1,10 @@
 import React from 'react';
 import ExpenseItem from './ExpenseItem';
-import PropTypes from 'prop-types';
+import { useSelector} from 'react-redux';
+import {selectExpensesByName} from '../../redux/selectors/expenseSelectors'
 
-const ExpenseList = React.memo(({ expenses }) => {
-
+const ExpenseList = () => {
+  const expenses = useSelector((state) => selectExpensesByName(state));
   return (
     <div className="expense-list add-margin-y">
       {expenses &&
@@ -12,10 +13,7 @@ const ExpenseList = React.memo(({ expenses }) => {
         })}
     </div>
   );
-});
+}
 
-ExpenseList.propTypes = {
-  expenses: PropTypes.array.isRequired,
-};
 
 export default ExpenseList;

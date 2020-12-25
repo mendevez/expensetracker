@@ -17,7 +17,7 @@ const initialState = {
   searchKeyword: '',
   totalCostCurrentWeek: 0,
   totalCostCurrentMonth: 0,
-  totalCost: null,
+  totalCost: 0,
 };
 
 export default (state = initialState, action) => {
@@ -42,6 +42,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         expenses: state.expenses.concat(payload.data),
+        searchKeyword: '',
         isLoading: false,
       };
     case EDIT_EXPENSE:
@@ -87,8 +88,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         expenses: [],
+        searchKeyword: '',
+        totalCostCurrentMonth: 0,
+        totalCostCurrentWeek: 0,
         isLoading: true,
-        totalCost: null,
+        totalCost: 0,
       };
 
     default:

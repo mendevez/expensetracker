@@ -3,6 +3,7 @@ import {
   LOGIN_USER,
   LOAD_USER,
   LOGOUT,
+  UPDATE_MONTHLY_BUDGET,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -19,7 +20,7 @@ export default (state = initialState, action) => {
       localStorage.setItem('token', payload.token);
       return {
         ...state,
-        token: payload.token,
+        user: payload.user,
         isAuthenticated: true,
       };
     case LOGIN_USER:
@@ -28,6 +29,11 @@ export default (state = initialState, action) => {
         ...state,
         token: payload.token,
         isAuthenticated: true,
+      };
+    case UPDATE_MONTHLY_BUDGET:
+      return {
+        ...state,
+        user: { ...state.user, monthlyBudget: payload.data.monthlyBudget },
       };
     case LOGOUT:
       localStorage.removeItem('token');
@@ -40,8 +46,8 @@ export default (state = initialState, action) => {
     case LOAD_USER:
       return {
         ...state,
-        isAuthenticated: true,
         user: payload.data,
+        isAuthenticated: true,
       };
     default:
       return state;

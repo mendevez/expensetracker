@@ -3,7 +3,13 @@ import ReactDOM from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import DeleteModal from '../expenses/DeleteModal';
 import RegisterModal from '../auth/RegisterModal';
-import { DELETE_MODAL, LOGIN_MODAL, REGISTER_MODAL } from './modalTypes';
+import UpdateMonthlyBudgetModal from '../auth/UpdateMonthlyBudgetModal';
+import {
+  DELETE_MODAL,
+  LOGIN_MODAL,
+  MONTHLY_BUDGET_MODAL,
+  REGISTER_MODAL,
+} from './modalTypes';
 import { hideModal } from '../../redux/actions/modalActions';
 import {
   selectModalType,
@@ -29,6 +35,7 @@ const ModalManager = () => {
       {modalType === DELETE_MODAL && <DeleteModal />}
       {modalType === REGISTER_MODAL && <RegisterModal />}
       {modalType === LOGIN_MODAL && <LoginModal />}
+      {modalType === MONTHLY_BUDGET_MODAL && <UpdateMonthlyBudgetModal />}
     </Fragment>,
     document.getElementById('portal')
   );

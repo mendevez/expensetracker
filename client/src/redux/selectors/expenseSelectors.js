@@ -11,6 +11,8 @@ export const selectTotalByCategoryChartData = (state) =>
   state.charts.totalByCategoryChartData;
 export const selectTotalByMonthChartData = (state) =>
   state.charts.totalCostByMonthChartData;
+export const selectTotalCostForCurrentMonth = (state) =>
+  state.expenses.totalCostCurrentMonth;
 
 export const selectExpensesByName = createSelector(
   selectExpenses,

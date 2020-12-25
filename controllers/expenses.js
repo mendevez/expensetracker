@@ -3,23 +3,12 @@ const Expense = require('../models/Expense');
 const ErrorResponse = require('../utils/errorResponse');
 const helperFunctions = require('../utils/helperFunctions');
 const moment = require('moment');
+
 // @desc        Get all expenses
 // @route       GET /api/v1/expenses
 // @access      Private
 exports.getExpenses = asyncHandler(async (req, res, next) => {
-
-  const searchResult = req.query.keyword
-    ? {
-        userId: req.user.id,
-        name: {
-          $regex: req.query.keyword,
-          $options: 'i',
-        },
-      }
-    : {
-        userId: req.user.id,
-      };
-  const expenses = await Expense.find({...searchResult});
+  const expenses = await Expense.find({ userId: req.user.id }).sort({createdAt: -1});
   res
     .status(200)
     .json({ success: true, count: expenses.length, data: expenses });
@@ -139,19 +128,22 @@ exports.getTotalCostByMonth = asyncHandler(async (req, res, next) => {
         total: { $sum: '$cost' },
       },
     },
+    {
+      $sort: { createdAt: 1, _id: 1 },
+    },
   ]);
 
-  const totalCostByMonthObject = helperFunctions.convertArrayToObject(
+  const getTotalCostByMonthObject = helperFunctions.convertArrayToObject(
     totalCostByMonth
   );
 
-  res.status(200).json({ success: true, data: totalCostByMonthObject });
+  res.status(200).json({ success: true, data: getTotalCostByMonthObject });
 });
 
 // @desc        Sum all expenses for current week
 // @route       GET /api/v1/expenses/totalcurrentweek
 // @access      Private
-exports.totalCostForCurrentWeek = asyncHandler(async (req, res, next) => {
+exports.getTotalCostForCurrentWeek = asyncHandler(async (req, res, next) => {
   const startOfWeek = moment().startOf('isoWeek').toString();
   const endOfWeek = moment().endOf('isoWeek').toString();
   let result = { total: 0 };
@@ -184,5 +176,40 @@ exports.totalCostForCurrentWeek = asyncHandler(async (req, res, next) => {
     ? (result = totalCostCurrentWeek[0])
     : result;
 
+  return res.status(200).json({ success: true, data: result });
+});
+
+exports.getTotalCostForCurrentMonth = asyncHandler(async (req, res, next) => {
+  const startOfMonth = moment().startOf('month');
+  const endofMonth = moment().endOf('month');
+
+  const totalCostCurrentMonth = await Expense.aggregate([
+    {
+      $match: {
+        $and: [
+          {
+            createdAt: {
+              $gte: new Date(startOfMonth),
+              $lt: new Date(endofMonth),
+            },
+          },
+          {
+            userId: req.user.id,
+          },
+        ],
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        total: { $sum: '$cost' },
+      },
+    },
+  ]);
+
+  // Check if the total cost has no values and set it to the response if it does
+  totalCostCurrentMonth.length >= 1
+    ? (result = totalCostCurrentMonth[0])
+    : result;
   return res.status(200).json({ success: true, data: result });
 });

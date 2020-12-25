@@ -1,0 +1,3 @@
+export const DELETE_MODAL = 'DELETE_MODAL';
+export const REGISTER_MODAL = 'REGISTER_MODAL';
+export const LOGIN_MODAL = 'LOGIN_MODAL';

@@ -7,20 +7,33 @@ import {
   GET_TOTAL_COST,
   GET_TOTAL_COST_CURRENT_WEEK,
   LOGOUT,
+  GET_TOTAL_COST_CURRENT_MONTH,
+  SET_SEARCH_KEYWORD,
 } from '../actions/actionTypes';
 
 const initialState = {
   expenses: [],
   isLoading: true,
+  searchKeyword: '',
   totalCostCurrentWeek: 0,
+  totalCostCurrentMonth: 0,
   totalCost: null,
 };
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case SET_SEARCH_KEYWORD:
+      return {
+        ...state,
+        searchKeyword: payload,
+      };
     case GET_EXPENSES:
-      return { ...state, expenses: payload.data, isLoading: false };
+      return {
+        ...state,
+        expenses: payload.data,
+        isLoading: false,
+      };
 
     case GET_EXPENSE:
       return { ...state, [payload.data._id]: payload.data, isLoading: false };
@@ -64,6 +77,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         totalCostCurrentWeek: payload.data.total,
+      };
+    case GET_TOTAL_COST_CURRENT_MONTH:
+      return {
+        ...state,
+        totalCostCurrentMonth: payload.data.total,
       };
     case LOGOUT:
       return {

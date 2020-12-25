@@ -12,12 +12,10 @@ import {
   faAlignLeft,
   faCalendarWeek,
   faLaptop,
-  faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   faUser,
-  faPlus,
   faEnvelope,
   faPen,
   faTrash,

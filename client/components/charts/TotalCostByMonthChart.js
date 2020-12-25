@@ -1,10 +1,11 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-const TotalCostByMonthChart = React.memo(({ totalCostByMonthChartData }) => {
+const TotalCostByMonthChart = ({ totalCostByMonthChartData }) => {
   if (!totalCostByMonthChartData) {
     return null;
   }
+  console.log('renderchartmonth')
   const chartLabels = Object.keys(totalCostByMonthChartData);
   const expensesByMonth = Object.values(totalCostByMonthChartData);
 
@@ -31,6 +32,7 @@ const TotalCostByMonthChart = React.memo(({ totalCostByMonthChartData }) => {
     <div className="add-box-shadow">
       <Bar
         height={300}
+
         data={data}
         options={{
           title: {
@@ -45,6 +47,6 @@ const TotalCostByMonthChart = React.memo(({ totalCostByMonthChartData }) => {
       />
     </div>
   );
-});
+};
 
 export default TotalCostByMonthChart;

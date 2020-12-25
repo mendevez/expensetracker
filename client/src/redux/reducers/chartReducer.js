@@ -19,6 +19,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         totalCostByMonthChartData: payload.data,
+        // isLoading: false,
       };
 
     case GET_TOTAL_BY_CATEGORY:
@@ -35,6 +36,7 @@ export default (state = initialState, action) => {
           ...state.totalByCategoryChartData,
           [category]: state.totalByCategoryChartData[category] - cost,
         },
+        isLoading: false,
       };
     case LOGOUT:
       return {

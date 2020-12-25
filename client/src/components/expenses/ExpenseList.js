@@ -2,7 +2,8 @@ import React from 'react';
 import ExpenseItem from './ExpenseItem';
 import PropTypes from 'prop-types';
 
-const ExpenseList = ({ expenses }) => {
+const ExpenseList = React.memo(({ expenses }) => {
+
   return (
     <div className="expense-list add-margin-y">
       {expenses &&
@@ -11,7 +12,7 @@ const ExpenseList = ({ expenses }) => {
         })}
     </div>
   );
-};
+});
 
 ExpenseList.propTypes = {
   expenses: PropTypes.array.isRequired,

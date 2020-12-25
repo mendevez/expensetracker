@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
 
-export const TotalByCategoryChart = React.memo(
+export const TotalByCategoryChart = 
   ({ totalByCategoryChartData }) => {
     if (!totalByCategoryChartData) {
       return null;
     }
+    console.log('renderchartcategory');
 
     const chartLabels = Object.keys(totalByCategoryChartData);
     const costByCategory = Object.values(totalByCategoryChartData);
@@ -47,7 +48,7 @@ export const TotalByCategoryChart = React.memo(
       </div>
     );
   }
-);
+
 
 TotalByCategoryChart.propTypes = {
   totalByCategoryChartData: PropTypes.object.isRequired,

@@ -6,6 +6,7 @@ import {
   EDIT_EXPENSE,
   GET_TOTAL_COST,
   GET_TOTAL_COST_CURRENT_WEEK,
+  GET_TOTAL_COST_CURRENT_MONTH,
   SET_SEARCH_KEYWORD,
 } from './actionTypes';
 import api from '../../utils/api';
@@ -14,9 +15,21 @@ import { hideModal } from './modalActions';
 import { getTotalCostByMonth } from './chartActions';
 import { setAlert } from './alertActions';
 
-export const getExpenses = (keyword) => async (dispatch) => {
+export const setSearchKeyword = (keyword) => (dispatch) => {
+  console.log(keyword);
   try {
-    const response = await api.get(`/expenses?keyword=${keyword.trim()}`);
+    dispatch({
+      type: SET_SEARCH_KEYWORD,
+      payload: keyword,
+    });
+  } catch (error) {
+    dispatch(setAlert('Could not set keyword', 'fail'));
+  }
+};
+
+export const getExpenses = () => async (dispatch) => {
+  try {
+    const response = await api.get(`/expenses`);
 
     dispatch({
       type: GET_EXPENSES,
@@ -81,6 +94,7 @@ export const removeExpense = (expense) => async (dispatch) => {
     dispatch(getTotalCostByMonth());
     dispatch(hideModal());
     dispatch(getTotalCostCurrentWeek());
+    dispatch(getTotalCostCurrentMonth());
     dispatch(setAlert('Expense removed successfully', 'success'));
   } catch (error) {
     dispatch(setAlert(error.response.data.error, 'fail'));
@@ -110,4 +124,14 @@ export const getTotalCostCurrentWeek = () => async (dispatch) => {
     dispatch(setAlert(error.response.data.error, 'fail'));
   }
 };
-
+export const getTotalCostCurrentMonth = () => async (dispatch) => {
+  try {
+    const response = await api.get('expenses/totalcurrentmonth');
+    dispatch({
+      type: GET_TOTAL_COST_CURRENT_MONTH,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch(setAlert(error.response.data.error, 'fail'));
+  }
+};

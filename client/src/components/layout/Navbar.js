@@ -28,7 +28,7 @@ export const Navbar = () => {
     <ul>
       <li>
         <a className="navlink" href="#!" onClick={openRegisterModal}>
-          Register
+          Sign Up
         </a>
       </li>
       <li>

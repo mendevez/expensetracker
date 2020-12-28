@@ -16,7 +16,7 @@ const RegisterModal = () => {
     <div className="modal-register add-border-radius">
       <form className="modal-form" onSubmit={handleSubmit(submitData)}>
         <h1 className="app-form-title">
-          <FontAwesomeIcon icon="user" /> Register
+          <FontAwesomeIcon icon="user" /> Sign Up
         </h1>
         <input
           className="app-form-input"
@@ -64,7 +64,7 @@ const RegisterModal = () => {
         {errors.password?.type === 'required' && (
           <span className="app-form-error">Please enter password</span>
         )}
-        <button className="btn-form"> Register</button>
+        <button className="btn-form"> Sign Up</button>
       </form>
     </div>
   );

@@ -13,7 +13,8 @@
   border-radius: 5px;
   border: none;
   text-transform: uppercase;
-  text-decoration: none !important  ;
+  text-decoration: none;
+  transition: all 0.3s ease 0s;
 }
 
 .btn {
@@ -32,6 +33,13 @@
     color: $light-color;
     text-align: center;
     font-size: 0.8rem;
+    &:hover {
+      
+      &:hover {
+        color: $primary-color;
+        background: $secondary-color;
+      }
+    }
   }
   &-search {
     @extend %btn-shared;
@@ -56,6 +64,7 @@
     margin-right: 5px;
     border-radius: 25% 5% 25% 5%;
     background: $tertiary-color;
+    transition: all 0.3s ease 0s;
 
     .icon-edit {
       color: $light-color;
@@ -64,11 +73,26 @@
       background: $green-color;
     }
   }
+  &-landing {
+    @extend %btn-shared;
+    border: 1px $secondary-color solid;
+    margin: 1rem;
+    color: $secondary-color;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      color: $primary-color;
+      background: $secondary-color;
+    }
+  }
 
   &-actions {
+    @extend %btn-shared;
     color: $primary-color;
-    margin-left: .5rem;
     cursor: pointer;
+    &:hover {
+      color: $secondary-color;
+    }
+
   }
   &-modal {
     @extend %btn-shared;

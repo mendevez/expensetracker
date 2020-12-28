@@ -16,7 +16,6 @@ import { getTotalCostByMonth } from './chartActions';
 import { setAlert } from './alertActions';
 
 export const setSearchKeyword = (keyword) => (dispatch) => {
-  console.log(keyword);
   try {
     dispatch({
       type: SET_SEARCH_KEYWORD,

@@ -37,10 +37,8 @@ const DashboardActions = () => {
         Current Month Total: {totalCostForCurrentMonth}
       </span>
       <div className="dashboard-actions-text add-margin-y">
-        <span className="">
-          Monthly Budget: {userMonthlyBudget}
-        </span>
-        <span onClick={displayModal} className="btn-actions" >
+        <span className="">Monthly Budget: {userMonthlyBudget}</span>
+        <span onClick={displayModal} className="btn-actions">
           <FontAwesomeIcon icon="pen" />
         </span>
       </div>

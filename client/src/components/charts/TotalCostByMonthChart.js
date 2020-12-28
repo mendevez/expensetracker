@@ -33,8 +33,8 @@ const TotalCostByMonthChart = () => {
   return (
     <div className="add-box-shadow">
       <Bar
-        height={300}
         data={data}
+        height={300}
         options={{
           title: {
             text: 'Total expenses by month',

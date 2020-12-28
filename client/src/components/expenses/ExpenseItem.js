@@ -21,7 +21,7 @@ const ExpenseItem = ({ expense }) => {
       onMouseEnter={() => setDisplayButtons('show-buttons')}
       onMouseLeave={() => setDisplayButtons('hide-buttons')}
     >
-      <div className="">
+      <div>
         <NavLink className="link" to={`/${_id}`}>
           <span className="expense-name"> {name}</span>
         </NavLink>

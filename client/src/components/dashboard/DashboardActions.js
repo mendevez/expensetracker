@@ -23,6 +23,7 @@ const DashboardActions = () => {
   };
 
   return (
+    
     <div className="dashboard-actions add-margin-x add-box-shadow">
       <NavLink className="btn-dashboard add-margin-y" to="/add">
         <FontAwesomeIcon icon="plus" /> New Expense

@@ -312,7 +312,8 @@ input:focus {
   z-index: 1000;
 }
 
-.modal-register, .modal-login {
+.modal-register,
+.modal-login {
   @extend %modal-shared;
   width: 40%;
 }
@@ -430,9 +431,9 @@ input:focus {
   }
 }
 
-@media screen and (max-height: 580px) {
+@media screen and (max-height: 320px) {
   .add-margin-y {
-    margin: 0 .8rem;
+    margin: 0 0.8rem;
   }
   .navbar {
     flex-direction: column;
@@ -449,23 +450,27 @@ input:focus {
   .dashboard {
     &-content {
       flex-direction: column;
-      
+      .expense-list {
+        &-item {
+          .hide-buttons {
+            display: block;
+          }
+        }
+      }
     }
     .dashboard-charts {
-
-      margin:1rem 0 0 0;
+      margin: 1rem 0 0 0;
     }
 
     &-actions {
       flex-wrap: wrap;
-      padding: .8rem;
-      font-size: .8rem;
+      padding: 1.5rem;
       &-text {
-        padding-top: .5rem;
+        padding-top: 0.5rem;
       }
     }
   }
   .btn-dashboard {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
 }

@@ -34,7 +34,6 @@
     text-align: center;
     font-size: 0.8rem;
     &:hover {
-      
       &:hover {
         color: $primary-color;
         background: $secondary-color;
@@ -92,7 +91,6 @@
     &:hover {
       color: $secondary-color;
     }
-
   }
   &-modal {
     @extend %btn-shared;
@@ -119,4 +117,10 @@
 }
 .add-margin-x {
   margin: 1rem 0;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
 }

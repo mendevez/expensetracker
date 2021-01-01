@@ -8,7 +8,9 @@ const moment = require('moment');
 // @route       GET /api/v1/expenses
 // @access      Private
 exports.getExpenses = asyncHandler(async (req, res, next) => {
-  const expenses = await Expense.find({ userId: req.user.id }).sort({createdAt: -1});
+  const expenses = await Expense.find({ userId: req.user.id }).sort({
+    createdAt: -1,
+  });
   res
     .status(200)
     .json({ success: true, count: expenses.length, data: expenses });
@@ -75,6 +77,9 @@ exports.getTotalByCategory = asyncHandler(async (req, res, next) => {
   const totalByCategory = await Expense.aggregate([
     { $match: { userId: req.user.id } },
     { $group: { _id: '$category', total: { $sum: '$cost' } } },
+    {
+      $sort: { cost: 1, _id: 1 },
+    },
   ]);
 
   const totalByCategoryObject = helperFunctions.convertArrayToObject(

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
-const ExpenseForm = ({ initialValues, onSubmit, title }) => {
+const ExpenseForm = ({ initialValues, onSubmit, title, buttonText }) => {
   const { register, handleSubmit, errors } = useForm({
     defaultValues: initialValues,
   });
@@ -16,7 +16,7 @@ const ExpenseForm = ({ initialValues, onSubmit, title }) => {
         onSubmit={handleSubmit(submitData)}
         className="app-form add-border-radius add-box-shadow"
       >
-        <h3>{title}</h3>
+        <h3 className="app-form-title">{title}</h3>
         <select
           placeholder="Category"
           className="app-form-input"
@@ -83,7 +83,7 @@ const ExpenseForm = ({ initialValues, onSubmit, title }) => {
           ref={register}
         />
 
-        <button className="btn-form"> Submit </button>
+        <button className="btn-form"> {buttonText} </button>
       </form>
     </div>
   );
@@ -93,6 +93,7 @@ ExpenseForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
 };
 
 export default ExpenseForm;

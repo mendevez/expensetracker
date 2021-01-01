@@ -13,7 +13,7 @@ const UpdateMonthlyBudgetModal = () => {
     dispatch(updateMonthlyBudget(data));
   };
   return (
-    <div className="modal-register add-border-radius">
+    <div className="modal-update-monthly-budget add-border-radius">
       <form className="modal-form" onSubmit={handleSubmit(submitData)}>
         <h1 className="app-form-title">Update Monthly Budget</h1>
         <input
@@ -34,7 +34,7 @@ const UpdateMonthlyBudgetModal = () => {
             Monthly budget must be a number
           </span>
         )}
-        <button className="btn-form">Submit</button>
+        <button className="btn-form">Update</button>
       </form>
     </div>
   );

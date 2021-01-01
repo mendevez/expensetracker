@@ -10,14 +10,14 @@ const AddExpense = () => {
   const onSubmit = async (data) => {
     dispatch(addExpense(data));
   };
-  const title = "Add a new expense"
+  const title = 'Add a new expense';
+  const buttonText = 'Add';
 
   return (
-    <div> 
-      
-      <ExpenseForm title ={title} initialValues={expense} onSubmit={onSubmit} />
+    <div>
+      <ExpenseForm title={title} initialValues={expense} onSubmit={onSubmit} buttonText = {buttonText} />
     </div>
   );
 };
 
-export default AddExpense
+export default AddExpense;

@@ -194,8 +194,7 @@ input:focus {
 }
 
 .dashboard {
-  margin-top: 2rem;
-
+  padding: 2rem;
   &-actions {
     padding: 2.5rem;
     display: flex;
@@ -313,14 +312,14 @@ input:focus {
   z-index: 1000;
 }
 
-.modal-register {
+.modal-register, .modal-login {
   @extend %modal-shared;
-  width: 30%;
+  width: 40%;
 }
 
-.modal-login {
+.modal-update-monthly-budget {
   @extend %modal-shared;
-  width: 30%;
+  width: 50%;
 }
 
 .modal-delete {

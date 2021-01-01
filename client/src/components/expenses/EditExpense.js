@@ -10,6 +10,7 @@ const EditExpense = ({ match }) => {
   const dispatch = useDispatch();
   const expense = useSelector((state) => selectExpense(state, id));
   const title = 'Edit expense';
+  const buttonText = 'Update';
 
   useEffect(() => {
     dispatch(getExpense(id));
@@ -24,7 +25,7 @@ const EditExpense = ({ match }) => {
   }
 
   return (
-    <ExpenseForm initialValues={expense} onSubmit={onSubmit} title={title} />
+    <ExpenseForm initialValues={expense} onSubmit={onSubmit} title={title} buttonText ={buttonText} />
   );
 };
 

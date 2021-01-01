@@ -219,7 +219,7 @@ input:focus {
 
     .expense-list-wrapper {
       flex: 1;
-      max-height: 500px;
+      max-height: 617px;
       overflow: auto;
     }
     .expense-list {
@@ -363,13 +363,11 @@ input:focus {
 
   .landing {
     &-content {
-
       padding: 0;
       h1 {
         font-size: 1.3rem;
       }
     }
-    
   }
   .dashboard {
     margin-bottom: 2rem;
@@ -391,13 +389,12 @@ input:focus {
 
       .expense-list {
         &-item {
-    
           .hide-buttons {
             display: block;
           }
           &-description {
             p {
-              margin:1rem 0;
+              margin: 1rem 0;
             }
             flex-direction: column;
           }
@@ -414,26 +411,22 @@ input:focus {
   }
 
   .btn-search {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     margin-left: 0;
     width: 90%;
   }
   .btn-form {
     align-self: center;
-    width:80%;
-    font-size: .8rem;
+    width: 80%;
+    font-size: 0.8rem;
   }
   .btn-dashboard {
     padding: 0.5rem 3rem;
   }
- 
-  .modal-delete {
-    width: 90%;
-  }
+
+  .modal-delete,
+  .modal-login,
   .modal-register {
-    width: 90%;
-  }
-  .modal-login {
     width: 90%;
   }
 }

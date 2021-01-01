@@ -429,3 +429,43 @@ input:focus {
     width: 90%;
   }
 }
+
+@media screen and (max-height: 580px) {
+  .add-margin-y {
+    margin: 0 .8rem;
+  }
+  .navbar {
+    flex-direction: column;
+    ul {
+      margin-top: 0.5rem;
+    }
+  }
+  .modal-delete,
+  .modal-login,
+  .modal-register,
+  .modal-update-monthly-budget {
+    width: 80%;
+  }
+  .dashboard {
+    &-content {
+      flex-direction: column;
+      
+    }
+    .dashboard-charts {
+
+      margin:1rem 0 0 0;
+    }
+
+    &-actions {
+      flex-wrap: wrap;
+      padding: .8rem;
+      font-size: .8rem;
+      &-text {
+        padding-top: .5rem;
+      }
+    }
+  }
+  .btn-dashboard {
+    margin-top: .5rem;
+  }
+}

@@ -7,11 +7,11 @@ node_modules/
 # Config
 config.env
 
+# Build
+/build
+
 # testing
 /coverage
-
-# production
-/build
 
 # misc
 .DS_Store

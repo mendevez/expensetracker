@@ -15,8 +15,10 @@ import { loadUser } from './redux/actions/authActions';
 
 const App = () => {
   useEffect(() => {
-    setAuthenticationToken(localStorage.token);
-    store.dispatch(loadUser());
+    if (localStorage.token) {
+      setAuthenticationToken(localStorage.token);
+      store.dispatch(loadUser());
+    }
   }, []);
 
   return (

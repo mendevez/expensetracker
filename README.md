@@ -13,5 +13,5 @@ npm start - runs the app in production mode
 This application requires a connection to MongoDB - you can get started with MongoDB on https://www.mongodb.com/
 The application uses the following environment variables: PORT, NODE_ENV, MONGODB_URI, JWT_SECRET, JWT_EXPIRE, JWT_COOKIE_EXPIRE
 
-Author
+## `Author`
 Mende Vezenkoski
